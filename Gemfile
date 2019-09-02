@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'rspotify'
 gem 'omniauth-spotify'
+gem 'omniauth-rails_csrf_protection'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
