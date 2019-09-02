@@ -32,4 +32,10 @@
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
+<% if current_user.spotify_config.nil? %>
+  <%= link_to "Connect with Spotify", "http://localhost:3000/users/auth/spotify" %>
+<% else %>
+  <%= link_to "Unlink your Spotify account", "http://localhost:3000/users/auth/spotify" %>
+<% end %>
+
 <%= link_to "Back", :back %>
