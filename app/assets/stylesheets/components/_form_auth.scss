@@ -1,0 +1,61 @@
+.form-auth {
+  background-color: transparent;
+  padding: 20px 20px;
+  margin: 10% auto;
+  display: block;
+  position: relative;
+  text-align: center;
+  // border-radius: 3px;
+  // box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-top: 0;
+
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: $primary;
+    color: white;
+  }
+}
+
+.form-auth::after {
+  content: "";
+  background: url('https://bit.ly/2ZGrly0');
+  background-size: cover;
+  background-position: center;
+  // min-height: 60vh;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+
+.forgot-password {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+}
+
+
+.form-control {
+  background-color: #F7F4F4 !important;
+  border-radius: 25px;
+}
+
+.cream {
+  background-color: #F7F4F4 !important;
+}
+
+.form-actions {
+  .btn-form {
+    border-radius: 25px !important;
+  }
+}
