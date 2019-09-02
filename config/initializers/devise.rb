@@ -262,6 +262,14 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :spotify, ENV["SPOTIFY_ID"], ENV["SPOTIFY_SECRET"],
     scope: 'user-read-email playlist-modify-public user-library-read user-library-modify user-top-read user-read-playback-state user-read-recently-played streaming user-read-private'
+
+  config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
+    scope: 'email',
+    info_fields: 'email, first_name, last_name',
+    image_size: 'square',  # 50x50, guaranteed ratio
+    secure_image_url: true
+
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
