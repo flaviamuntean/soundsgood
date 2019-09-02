@@ -15,6 +15,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'rspotify'
+gem 'omniauth-spotify'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
