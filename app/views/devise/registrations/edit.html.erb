@@ -21,6 +21,9 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :soundcloud_profile,
+                required:false
+                 %>
   </div>
 
   <div class="form-actions">
@@ -39,3 +42,4 @@
 <% end %>
 
 <%= link_to "Back", :back %>
+

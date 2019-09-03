@@ -46,5 +46,5 @@ User.destroy_all
 User.create(first_name:"David", last_name:"Grohl", email:"davig@lw.com", password:"abcd123")
 User.create(first_name:"Flavia", last_name:"Muntean", email:"flavia@lw.com", password:"abcd123")
 User.create(first_name:"Bruno", last_name:"Nery", email:"bruno@lw.com", password:"abcd123")
-User.create(first_name:"Pietro", last_name:"Dalla Vecchia", email:"pietro@lw.com", password:"abcd123")
+User.create(first_name:"Pietro", last_name:"Dalla Vecchia", email:"pietro@lw.com", password:"abcd123", soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia")
 User.create(first_name:"Tiago", last_name:"Alexandre Vaz Faria", email:"tiago@lw.com", password:"abcd123")
