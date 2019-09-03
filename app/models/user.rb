@@ -1,6 +1,8 @@
+require 'open-uri'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  #after_update :soundcloud_profile_load
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:spotify, :facebook]
@@ -10,8 +12,8 @@ class User < ApplicationRecord
   has_many :instruments, through: :user_instruments, dependent: :destroy
   has_many :user_genres
   has_many :genres, through: :user_genres, dependent: :destroy
-  # has_many :videos, dependent: :destroy
-  # has_many :audios, dependent: :destroy
+  has_many :videos, dependent: :destroy
+  has_many :audios, dependent: :destroy
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
     user_params.merge! auth.info.slice("email", "first_name", "last_name")
@@ -31,6 +33,22 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+
+  def soundcloud_profile_load
+    if self.soundcloud_profile.present?
+      #run method
+      url = 'https://api.soundcloud.com/resolve.json?url=' + self.soundcloud_profile + '/tracks&client_id=Xueuyz9qtHwN5mdmSV29YLkUHJhSx6b3'
+      tracks = JSON.load(open(url))
+      ids =[]
+      tracks.each do |track|
+        ids << track["id"]
+      end
+      ids[1..5]
+
+    end
+
   end
 end
 
