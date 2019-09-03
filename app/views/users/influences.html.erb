@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12">
 
-      <% if @user.spotify_config %>
+      <% if @user.store %>
 
         <div class="app">
           <h5>Top artists</h5>
@@ -56,7 +56,7 @@
         </div>
 
       <% else %>
-        <h2>No Spotify account</h2>
+        <%= link_to "Connect with Spotify", "http://localhost:3000/users/auth/spotify", class:"btn btn-spotify"%>
       <% end %>
 
     </div>
