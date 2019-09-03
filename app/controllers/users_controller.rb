@@ -11,8 +11,7 @@ class UsersController < ApplicationController
   end
 
   def audio
-    @audio = Audio.new
-    @audios = Audio.where(user_id: params[:id]).order(created_at: :DESC)
+    @ids = @user.soundcloud_profile_load
   end
 
   def bio
