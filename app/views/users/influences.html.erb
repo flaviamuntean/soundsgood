@@ -12,7 +12,7 @@
             <div>
               <li class="item" style="background-image: url('<%= artist.images[0]['url'] %>'); height: 90%">
               </li>
-              <%= artist.name %>
+              <p class="pr-3"><%= artist.name %></p>
             </div>
           <% end %>
           </ul>
@@ -25,8 +25,14 @@
             <div>
               <li class="item" style="background-image: url('<%= track.album.images[0]['url'] %>'); height: 90%">
               </li>
-              <%= track.name %>
-              <br>
+              <p class="m-0 pr-3">
+                <%= track.name %>
+                <% @id = track.id %>
+                <%= link_to add_to_playlist_user_path(@user, :track_id => @id) do%>
+                    <i class="fas fa-plus"></i>
+                <% end %>
+              <p>
+
               <% begin %>
                 <% preview = track.preview_url %>
                 <% if preview %>
@@ -62,3 +68,4 @@
     </div>
   </div>
 </div>
+

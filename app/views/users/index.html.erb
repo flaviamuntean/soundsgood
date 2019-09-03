@@ -1,15 +1,19 @@
 <form class="form-inline d-flex justify-content-center form-sm mt-0">
-    <input class="form-control form-control-sm w-75" type="text" placeholder="Instrument, Genre, Artists.."
+    <input class="form-control form-control-sm w-75" type="text" placeholder="Instruments, genres, artists..."
       aria-label="Search">
-      <i class="fas fa-map-marker-alt ml-2"></i>  
+      <i class="fas fa-map-marker-alt pl-2 ml-1" style="opacity:0.4; font-size: 20px;"></i>
 </form>
 <% @users.each do |user| %>
     <%= link_to user_path(user) do %>
         <div class="card m-4" style= "border: none;">
             <!-- Card image -->
-            <%= image_tag "tiago.jpg", :class => "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 200px;" %>
+            <% if !user.videos.empty? %>
+              <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos.first.uid %>" frameborder="0"></iframe>
+            <% else %>
+              <%= image_tag "tiago.jpg", :class => "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
+            <% end %>
             <!-- Card content -->
-                <div class="card-body py-2 px-1 d-flex justify-content-between">
+                <div class="card-body py-2 d-flex justify-content-between" style="padding-left: 6px; padding-right: 6px;">
                     <div class="d-flex flex-column">
                         <!-- Title -->
                         <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %></h4>

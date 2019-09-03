@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'audio'
       get 'bio'
       get 'influences'
+      get 'add-to-playlist', as: :add_to_playlist
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
