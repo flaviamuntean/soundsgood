@@ -32,5 +32,6 @@ class UsersController < ApplicationController
     @spotify_user = RSpotify::User.new(eval(@user.spotify_config))
     @top_artists = @spotify_user.top_artists(time_range: 'long_term') #=> (Artist array)
     @top_tracks = @spotify_user.top_tracks(time_range: 'long_term') #=> (Track array)
+    @track = @spotify_user.recently_played[0]
   end
 end

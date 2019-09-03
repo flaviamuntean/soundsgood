@@ -18,7 +18,7 @@ gem 'webpacker'
 #spotfy
 gem 'rspotify'
 gem 'omniauth-spotify'
-gem 'omniauth-rails_csrf_protection'
+# gem 'omniauth-rails_csrf_protection'
 #facebook
 gem 'omniauth-facebook'
 
