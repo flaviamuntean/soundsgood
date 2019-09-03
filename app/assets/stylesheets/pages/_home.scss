@@ -1,10 +1,22 @@
 // Specific CSS for your home-page
 body.homepage {
   background-color: #FFFFFF;
+  text-align: center;
 
   p {
   margin-top: 16px;
   }
 
+  .home-bg {
+    background: url('IMG_2234.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh;
+
+  }
+
 }
+
+
+
 
