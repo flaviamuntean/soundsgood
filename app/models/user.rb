@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   # validates :email, :password, :first_name, :last_name, presence: true
 
-  # has_many :videos, dependent: :destroy
-  # has_many :audios, dependent: :destroy
+  has_many :videos, dependent: :destroy
+  has_many :audios, dependent: :destroy
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
     user_params.merge! auth.info.slice("email", "first_name", "last_name")
