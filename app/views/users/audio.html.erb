@@ -1,7 +1,36 @@
+<%= render "shared/banner" %>
+
 <% if @user.soundcloud_profile.nil? %>
-  <h1>No songs to show😰😰😰😰😰</h1>
+  <div class="container">
+    <div class="mt-5">
+      <div>
+      <h1 class="no-song"> There isn't any song to play...</h1>
+      </div>
+    </div>
+    <div>
+      <% if @user.videos.any? %>
+        <div class="mt-4">
+          <h3 class="but-text">But you can check out <%= @user.first_name %>'s videos and influences: </h3>
+        </div>
+        <div class=" mt-4 d-flex justify-content-around">
+          <div class="btn btn-outline-info"><%= link_to "Videos", user_path, class: "audio_links" %></div>
+          <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links"%></div>
+        </div>
+      <% else %>
+          <h3 class=" mt-4 but-text">But you can check out <%= @user.first_name %>'s influences:</h3>
+          <div class="mt-4 d-flex justify-content-around">
+            <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links" %></div>
+          </div>
+      <% end %>
+    </div>
+  </div>
 <% else %>
   <% @ids.each do |id| %>
-    <iframe width="100%" height="110" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= id %>&color=%23de3d4b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=false&buying=false&sharing=false&show_playcount=false"></iframe>
+    <div class="container">
+      <div class="mt-4">
+        <iframe width="100%" height="110" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= id %>&color=%23faa916&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=false&buying=false&sharing=false&show_playcount=false"></iframe>
+      </div>
+    </div>
   <% end %>
 <% end %>
+
