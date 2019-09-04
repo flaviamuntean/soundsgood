@@ -21,6 +21,7 @@ gem 'omniauth-spotify'
 # gem 'omniauth-rails_csrf_protection'
 #facebook
 gem 'omniauth-facebook'
+gem 'pg_search'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

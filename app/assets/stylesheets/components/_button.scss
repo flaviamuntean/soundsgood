@@ -6,13 +6,20 @@ a.btn.home {
   padding: 8px 40px;
 }
 
+a.btn.cancel {
+  background-color: $danger;
+  color: white;
+  font-size: 1rem;
+  border-radius: 25px;
+  padding: 6px 40px;
+}
 
 a.btn.profile {
   background-color: $primary;
   color: white;
   font-size: 16px;
   border-radius: 25px;
-  padding: 8px 30px;
+  padding: 6px 30px;
 }
 
 a.explore {
