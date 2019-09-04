@@ -21,7 +21,13 @@ class UsersController < ApplicationController
   end
 
   def bio
-    @bio = @user.bio
+    @current_user = current_user
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to bio_user_path, notice: 'Bio was successfully updated.'
+    end
   end
 
   def influences
@@ -43,6 +49,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:bio)
+
+
   end
 
   def fetch_spotify_details

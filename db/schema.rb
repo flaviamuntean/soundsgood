@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_170608) do
     t.datetime "token_expiry"
     t.string "soundcloud_profile"
     t.json "store"
+    t.string "avatar"
     t.float "latitude"
     t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true

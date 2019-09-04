@@ -1,6 +1,11 @@
 require 'open-uri'
 class User < ApplicationRecord
   include PgSearch::Model
+  mount_uploader :avatar, PhotoUploader
+  mount_uploader :photos, PhotoUploader
+
+  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   #after_update :soundcloud_profile_load
@@ -15,6 +20,7 @@ class User < ApplicationRecord
   has_many :genres, through: :user_genres, dependent: :destroy
   has_many :videos, dependent: :destroy
   has_many :audios, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
