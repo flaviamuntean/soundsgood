@@ -1,0 +1,42 @@
+<div>
+  <% if @user == @current_user%>
+    <% if @user.bio.nil? %>
+      <%= form_for [@user] do |f| %>
+        <div class="">
+          <%= f.text_field :bio, class: 'form-control', required: true, placeholder: "Whats your story??" %>
+          <div class="">
+            <button class="btn btn-outline-info" type="submit">Add your bio!</button>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <%= form_for [@user] do |f| %>
+        <div class="">
+          <%= f.text_field :bio, class: 'form-control', required: true, placeholder: @user.bio %>
+          <div class="">
+            <button class="btn btn-outline-info" type="submit">Update your bio!</button>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <h4>About <%= @user.first_name%></h4>
+  <p><%= @user.bio %></p>
+</div>
+
+<div>
+  <h4>Instruments</h4>
+  <% @user.instruments.each do |instrument| %>
+  <%= instrument.name.capitalize %> <%= image_tag instrument.icon, :style => "height: 30px" %>
+  <% end %>
+</div>
+
+<div>
+  <h4>Genres</h4>
+  <% @user.genres.each do |genre|%>
+  <%= genre.name.capitalize %>
+  <% end %>
+</div>

@@ -10,8 +10,12 @@
             <% if !user.videos.empty? %>
               <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos.first.uid %>" frameborder="0"></iframe>
             <% else %>
-              <%= image_tag "tiago.jpg", :class => "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
+              <%= cl_image_tag photo_or_fallback(user), class:  "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
             <% end %>
+
+
+
+
             <!-- Card content -->
                 <div class="card-body py-2 d-flex justify-content-between" style="padding-left: 6px; padding-right: 6px;">
                     <div class="d-flex flex-column">

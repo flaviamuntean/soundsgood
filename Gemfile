@@ -21,7 +21,11 @@ gem 'omniauth-spotify'
 # gem 'omniauth-rails_csrf_protection'
 #facebook
 gem 'omniauth-facebook'
+#cloudinary
 
+
+gem 'carrierwave', '~> 1.2'
+gem 'cloudinary', '~> 1.9.1'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
