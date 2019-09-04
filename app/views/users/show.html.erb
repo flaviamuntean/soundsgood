@@ -1,5 +1,7 @@
 <!-- RENDER BANNER FROM SHARED HERE -->
 
+<%= render "shared/banner" %>
+<%= render "shared/profile-bar" %>
 
 
 <!-- RENDER USER MENU FROM SHARED HERE -->
@@ -15,7 +17,7 @@
           <div class="input-group mb-3">
             <%= f.text_field :url, class: 'form-control', required: true, placeholder: "Youtube link" %>
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary youtube" type="submit">Add video now!</button>
+              <button class="home btn btn-outline-secondary youtube" type="submit">Add video now!</button>
             </div>
           </div>
       <% end %>
