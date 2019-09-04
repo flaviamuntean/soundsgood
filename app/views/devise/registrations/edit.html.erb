@@ -1,45 +1,60 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+      <div class="form-auth">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+        <h2>Edit your profile </h2>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :soundcloud_profile,
-                required:false
-                 %>
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true %>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+            <%= f.input :password,
+                        hint: "Please leave it blank if you don't want to change it.",
+                        required: false,
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: false,
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :current_password,
+                        hint: "We need your current password to confirm your changes.",
+                        required: true,
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :soundcloud_profile,
+                        required:false
+                         %>
+          </div>
+
+          <p><%= image_tag 'spotify.png', width:"20px", class:"mr-1", style:"padding-bottom: 2px;" %>Spotify profile</p>
+
+          <% if current_user.store.nil? %>
+            <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
+          <% else %>
+            <%= link_to "Unlink Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
+          <% end %>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class:"btn home" %>
+          </div>
+        <% end %>
+
+        <h3 class="mt-3">Cancel my account</h3>
+
+        <p>Are you sure you would like to cancel your account? We will be sorry to see you go 🙁 .</p>
+
+        <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn cancel" %>
+
+        <%= link_to "Back", :back, class:"btn profile" %>
+
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update", class:"btn home" %>
-  </div>
-<% end %>
-
-<% if current_user.spotify_config.nil? %>
-  <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
-<% else %>
-  <%= link_to "Unlink your Spotify account", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
 

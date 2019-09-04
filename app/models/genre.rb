@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  belongs_to :user_genres
+  has_many :user_genres
 end
