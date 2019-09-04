@@ -1,10 +1,10 @@
 <div class="profile-bar footer-style">
 
+
   <div>
     <%= link_to user_path(@user) do  %>
       <%= image_tag "videobutton.svg" %>
-  <% end %>
-
+    <% end %>
   </div>
 
   <div>
@@ -23,9 +23,8 @@
 
   <div>
     <%= link_to bio_user_path(@user) do  %>
-    <%= image_tag "biobutton.svg" %>
+      <%= image_tag "biobutton.svg" %>
     <% end %>
-
   </div>
 
   <div>
@@ -36,9 +35,5 @@
     <%= link_to influences_user_path(@user) do  %>
       <%= image_tag "influences.svg" %>
     <% end %>
-
   </div>
-
-
-
 </div>
