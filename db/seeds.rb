@@ -13,6 +13,9 @@ UserInstrument.destroy_all
 Genre.destroy_all
 UserGenre.destroy_all
 
+addresses = ['Rua Rodrigues Sampaio 172, Lisboa', 'São Jorge de Arroios, Lisbon', 'Rua João Penha 2-14, Lisboa', 'Rua Damasceno Monteiro 74-152, Lisboa', 'Rua Manuel Soares Guedes 1, Lisboa', "Rua de Sant'Ana à Lapa 2-52, Lisboa", 'Rua do Patrocínio 55-1, Lisboa', 'Rua de Borges Carneiro 57, Lisboa', 'Rua Vítor Cordon 24-40, Lisboa']
+
+
 Instrument.create(name:"acoustic guitar", icon: "instruments/Guitar Classical.svg")
 Instrument.create(name:"guitar", icon: "instruments/Guitar Electric.svg")
 Instrument.create(name:"drums", icon: "instruments/Drums.svg")
@@ -46,12 +49,12 @@ Genre.create(name:"soul")
 Genre.create(name:"reggae")
 
 
-User.create(first_name:"David", last_name:"Grohl", email:"davig@lw.com", password:"abcd123")
-User.create(first_name:"Flavia", last_name:"Muntean", email:"flavia@lw.com", password:"abcd123")
-User.create(first_name:"Bruno", last_name:"Nery", email:"bruno@lw.com", password:"abcd123")
-User.create(first_name:"Pietro", last_name:"Dalla Vecchia", email:"pietro@lw.com", password:"abcd123", soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia")
-User.create(first_name:"Tiago", last_name:"Alexandre Vaz Faria", email:"tiago@lw.com", password:"abcd123")
-User.create(first_name:"Carolina", last_name:"Vieira", email:"carolina@lw.com", password:"abcd123")
+User.create(first_name:"David", last_name:"Grohl", email:"davig@lw.com", password:"abcd123", address: addresses.sample)
+User.create(first_name:"Flavia", last_name:"Muntean", email:"flavia@lw.com", password:"abcd123", address: addresses.sample)
+User.create(first_name:"Bruno", last_name:"Nery", email:"bruno@lw.com", password:"abcd123", address: addresses.sample)
+User.create(first_name:"Pietro", last_name:"Dalla Vecchia", email:"pietro@lw.com", password:"abcd123", soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia", address: addresses.sample)
+User.create(first_name:"Tiago", last_name:"Alexandre Vaz Faria", email:"tiago@lw.com", password:"abcd123", address: addresses.sample)
+User.create(first_name:"Carolina", last_name:"Vieira", email:"carolina@lw.com", password:"abcd123", address: addresses.sample)
 
 # users = User.all
 instruments = Instrument.all

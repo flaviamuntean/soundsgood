@@ -6,6 +6,8 @@ class UsersController < ApplicationController
       @users = User.global_search(params[:query])
     else
       @users = User.all
+      # use the one below to get only the users near you
+      # @users = current_user.nearbys
     end
   end
 
