@@ -1,0 +1,71 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+
+      <% if @user.store %>
+
+        <div class="app">
+          <h5>Top artists</h5>
+          <ul class="hs full">
+          <% @top_artists.each do |artist| %>
+            <div>
+              <li class="item" style="background-image: url('<%= artist.images[0]['url'] %>'); height: 90%">
+              </li>
+              <p class="pr-3"><%= artist.name %></p>
+            </div>
+          <% end %>
+          </ul>
+        </div>
+
+        <div class="app tracks">
+          <h5>Top tracks</h5>
+          <ul class="hs full">
+          <% @top_tracks.each do |track| %>
+            <div>
+              <li class="item" style="background-image: url('<%= track.album.images[0]['url'] %>'); height: 90%">
+              </li>
+              <p class="m-0 pr-3">
+                <%= track.name %>
+                <% @id = track.id %>
+                <%= link_to add_to_playlist_user_path(@user, :track_id => @id) do%>
+                    <i class="fas fa-plus"></i>
+                <% end %>
+              <p>
+
+              <% begin %>
+                <% preview = track.preview_url %>
+                <% if preview %>
+                  <video class="my-1 spotify-preview"controls="" name="media"><source src="<%= preview %>" type="audio/mpeg"></video>
+                <% end %>
+              <% rescue %>
+                  <%= " " %>
+              <% end %>
+
+            </div>
+          <% end %>
+          </ul>
+        </div>
+
+        <div class="text-center d-flex flex-column align-content-center">
+          <h5 class="mt-5 mb-3"> LAST PLAYED TRACK</h5>
+            <div>
+              <div class="last-track" style="background-image: url('<%= @track.album.images[0]['url'] %>');">
+              </div>
+              <div class="mb-1" style="font-size: 10px;"><%= @track.artists[0].name.upcase %> - <%= @track.name.upcase %></div>
+
+              <% preview = @track.preview_url %>
+              <% if !preview.nil? %>
+                <video class="m-2 pr-0" style="width: 100%; height: 25px;" controls="" name="media"><source src="<%= preview %>" type="audio/mpeg"></video>
+              <% end %>
+            </div>
+        </div>
+
+      <% else %>
+        <%= link_to "Connect with Spotify", "http://localhost:3000/users/auth/spotify", class:"btn btn-spotify"%>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

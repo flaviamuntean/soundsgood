@@ -1,2 +1,38 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!-- RENDER BANNER FROM SHARED HERE -->
+
+
+
+<!-- RENDER USER MENU FROM SHARED HERE -->
+<div class="jumbotron pt-3 pb-1">
+  <div class="container">
+    <h4>Share your videos with the world!</h4>
+
+
+      <%= form_for [@user, @video] do |f| %>
+        <%#= render 'shared/errors', object: @video %>
+
+
+          <div class="input-group mb-3">
+            <%= f.text_field :url, class: 'form-control', required: true, placeholder: "Youtube link" %>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary youtube" type="submit">Add video now!</button>
+            </div>
+          </div>
+      <% end %>
+
+  </div>
+</div>
+
+<h5 class="mb-2 text-center" style="text-transform: uppercase;"><%= @user.first_name %>'s videos</h5>
+
+
+<!-- VIDEO FEED -->
+<div class="video-feed d-flex flex-column">
+  <% @videos.each do |video| %>
+    <div class="align-self-center">
+      <iframe id="ytplayer" width="414px" height="233px" type="text/html" src="https://www.youtube.com/embed/<%= video.uid %>" frameborder="0"></iframe>
+    </div>
+  <% end %>
+</div>
+
+

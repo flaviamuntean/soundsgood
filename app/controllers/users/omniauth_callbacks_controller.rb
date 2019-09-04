@@ -1,13 +1,24 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  # WITH JSON
   def spotify
     @user = current_user
     credentials = request.env["omniauth.auth"]
-    @user.spotify_config = credentials.to_hash
+    @user.store = credentials.to_json
     if @user.save
       redirect_to edit_user_registration_path, event: :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, kind: "Spotify") if is_navigational_format?
     end
   end
+
+  # def spotify
+  #   @user = current_user
+  #   credentials = request.env["omniauth.auth"]
+  #   @user.spotify_credentials = credentials.to_hash
+  #   if @user.save
+  #     sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+  #     set_flash_message(:notice, :success, kind: "Spotify") if is_navigational_format?
+  #   end
+  # end
 
   def failure
     redirect_to edit_user_registration_path

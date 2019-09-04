@@ -1,0 +1,7 @@
+<% if @user.soundcloud_profile.nil? %>
+  <h1>No songs to show😰😰😰😰😰</h1>
+<% else %>
+  <% @ids.each do |id| %>
+    <iframe width="100%" height="110" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= id %>&color=%23de3d4b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=false&buying=false&sharing=false&show_playcount=false"></iframe>
+  <% end %>
+<% end %>
