@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_user, except: :index
   def index
-    @users = User.all
+    if params[:query].present?
+      @users = User.global_search(params[:query])
+    else
+      @users = User.all
+    end
   end
 
   def show

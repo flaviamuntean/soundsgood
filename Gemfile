@@ -21,7 +21,10 @@ gem 'omniauth-spotify'
 # gem 'omniauth-rails_csrf_protection'
 #facebook
 gem 'omniauth-facebook'
-#cloudinary
+
+gem 'pg_search'
+gem 'geocoder'
+
 
 
 gem 'carrierwave', '~> 1.2'

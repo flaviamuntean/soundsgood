@@ -1,8 +1,9 @@
 <form class="form-inline d-flex justify-content-center form-sm mt-0">
     <input class="form-control form-control-sm w-75" type="text" placeholder="Instruments, genres, artists..."
-      aria-label="Search">
+      aria-label="Search" name="query">
       <i class="fas fa-map-marker-alt pl-2 ml-1" style="opacity:0.4; font-size: 20px;"></i>
 </form>
+
 <% @users.each do |user| %>
     <%= link_to user_path(user) do %>
         <div class="card m-4" style= "border: none;">
@@ -38,3 +39,4 @@
         </div>
     <% end %>
 <% end %>
+

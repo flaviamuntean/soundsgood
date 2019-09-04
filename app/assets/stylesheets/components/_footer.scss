@@ -3,9 +3,12 @@
   display:flex;
   list-style:none;
   margin-top: 50px;
-  align-items: flex-end;
 }
 
-footer{
+footer {
   padding-bottom: 0px;
+}
+
+.main-container {
+  min-height: 100vh;
 }

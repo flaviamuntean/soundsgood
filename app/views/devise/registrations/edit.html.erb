@@ -4,7 +4,7 @@
 
       <div class="form-auth">
 
-        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <h2>Edit your profile </h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
@@ -34,7 +34,7 @@
             <%= f.input :avatar_cache, as: :hidden %>
           </div>
 
-          <p>Spotify profile</p>
+          <p><%= image_tag 'spotify.png', width:"20px", class:"mr-1", style:"padding-bottom: 2px;" %>Spotify profile</p>
 
           <% if current_user.store.nil? %>
             <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
