@@ -32,9 +32,9 @@
 <% end %>
 
 <% if current_user.spotify_config.nil? %>
-  <%= link_to "Connect with Spotify", "http://localhost:3000/users/auth/spotify", class:"btn btn-spotify" %>
+  <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
 <% else %>
-  <%= link_to "Unlink your Spotify account", "http://localhost:3000/users/auth/spotify", class:"btn btn-spotify" %>
+  <%= link_to "Unlink your Spotify account", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
 <% end %>
 
 <h3>Cancel my account</h3>

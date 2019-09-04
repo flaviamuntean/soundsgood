@@ -1,15 +1,15 @@
-require 'open-uri'
-class AudiosController < ApplicationController
+# require 'open-uri'
+# class AudiosController < ApplicationController
 
-  def create
-  end
+#   def create
+#   end
 
-  def destroy
-  end
+#   def destroy
+#   end
 
-private
+# private
 
-  def fecth_user
-    @user = User.find(params[:user_id])
-  end
-end
+#   def fecth_user
+#     @user = User.find(params[:user_id])
+#   end
+# end
