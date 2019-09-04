@@ -1,3 +1,3 @@
 class Instrument < ApplicationRecord
-  belongs_to :user_instrument
+  has_many :user_instruments
 end
