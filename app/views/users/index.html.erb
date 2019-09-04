@@ -4,36 +4,39 @@
       <i class="fas fa-map-marker-alt pl-2 ml-1" style="opacity:0.4; font-size: 20px;"></i>
 </form>
 
-  <% @users.each do |user| %>
-      <%= link_to user_path(user) do %>
-          <div class="card m-4" style= "border: none;">
-              <!-- Card image -->
-              <!-- If the user has videos, display the first one of the front page -->
-              <% if !user.videos.empty? %>
-                <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos.first.uid %>" frameborder="0"></iframe>
-              <% else %>
+<% @users.each do |user| %>
+    <%= link_to user_path(user) do %>
+        <div class="card m-4" style= "border: none;">
+            <!-- Card image -->
+            <% if !user.videos.empty? %>
+              <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos.first.uid %>" frameborder="0"></iframe>
+            <% else %>
+              <%= cl_image_tag photo_or_fallback(user), class:  "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
+            <% end %>
 
-                <%= image_tag "tiago.jpg", :class => "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
-              <% end %>
-              <!-- Card content -->
-                  <div class="card-body py-2 d-flex justify-content-between" style="padding-left: 6px; padding-right: 6px;">
-                      <div class="d-flex flex-column">
-                          <!-- Title -->
-                          <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %></h4>
-                          <!-- Text -->
-                          <% if !user.genres.empty? %>
-                            <p class="card-text text-body"><%= user.genres.first.name %></p>
-                          <% end %>
-                      </div>
-                      <div class="d-flex flex-column justify-content-between">
-                          <p class= "mb-0 text-right text-muted h6 mb-1">1.5km</p>
-                          <div>
-                              <% user.instruments[0..2].each do |instrument| %>
-                              <%= image_tag instrument.icon, :style => "height: 30px" %>
-                              <% end %>
-                          </div>
-                      </div>
-                  </div>
-          </div>
-      <% end %>
-  <% end %>
+
+
+
+            <!-- Card content -->
+                <div class="card-body py-2 d-flex justify-content-between" style="padding-left: 6px; padding-right: 6px;">
+                    <div class="d-flex flex-column">
+                        <!-- Title -->
+                        <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %></h4>
+                        <!-- Text -->
+                        <% if !user.genres.empty? %>
+                          <p class="card-text text-body"><%= user.genres.first.name %></p>
+                        <% end %>
+                    </div>
+                    <div class="d-flex flex-column justify-content-between">
+                        <p class= "mb-0 text-right text-muted h6 mb-1">1.5km</p>
+                        <div>
+                            <% user.instruments[0..2].each do |instrument| %>
+                            <%= image_tag instrument.icon, :style => "height: 30px" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    <% end %>
+<% end %>
+
