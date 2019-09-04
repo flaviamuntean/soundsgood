@@ -1,5 +1,6 @@
 require 'open-uri'
 class User < ApplicationRecord
+  include PgSearch::Model
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   #after_update :soundcloud_profile_load
@@ -14,6 +15,18 @@ class User < ApplicationRecord
   has_many :genres, through: :user_genres, dependent: :destroy
   has_many :videos, dependent: :destroy
   has_many :audios, dependent: :destroy
+
+  multisearchable against: [:first_name, :last_name, :bio]
+
+  pg_search_scope :global_search,
+    against: [:first_name, :last_name, :bio],
+    associated_against: {
+      instruments: [:name],
+      genres: :name
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
