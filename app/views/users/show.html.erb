@@ -29,7 +29,7 @@
 
 
 <!-- VIDEO FEED -->
-<div class="video-feed d-flex flex-column">
+<div class="video-feed d-flex flex-column" style="margin-bottom: 5px;">
   <% @videos.each do |video| %>
     <div class="align-self-center">
       <iframe id="ytplayer" width="414px" height="233px" type="text/html" src="https://www.youtube.com/embed/<%= video.uid %>" frameborder="0"></iframe>
