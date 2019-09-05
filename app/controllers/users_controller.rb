@@ -3,9 +3,17 @@ class UsersController < ApplicationController
   before_action :set_user, except: :index
   def index
     if params[:query].present?
-      @users = User.global_search(params[:query])
+      if current_user
+        @users = User.global_search(params[:query]).where.not(id: current_user.id)
+      else
+        @users = User.global_search(params[:query])
+      end
     else
-      @users = User.all
+      if current_user
+        @users = User.where.not(id: current_user.id)
+      else
+        @users = User.all
+      end
       # use the one below to get only the users near you
       # @users = current_user.nearbys
     end
@@ -22,17 +30,20 @@ class UsersController < ApplicationController
   end
 
   def audio
+    session[:current_path] = audio_user_path(params[:id])
     @ids = @user.soundcloud_profile_load
   end
 
   def bio
+    session[:current_path] = bio_user_path(params[:id])
     @current_user = current_user
   end
 
   def update
     if @user.update(user_params)
-      redirect_to bio_user_path, notice: 'Bio was successfully updated.'
+      redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
     end
+    session[:current_path] = nil
   end
 
   def influences
@@ -62,9 +73,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:bio)
-
-
+    params.require(:user).permit(:bio, :soundcloud_profile)
   end
 
   def fetch_spotify_details
