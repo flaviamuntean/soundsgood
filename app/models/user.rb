@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  # after_sign_out :geocode, if: :will_save_change_to_address?
 
   multisearchable against: [:first_name, :last_name, :bio]
 

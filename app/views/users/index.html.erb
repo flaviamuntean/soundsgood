@@ -1,9 +1,18 @@
 <form class="form-inline d-flex justify-content-center form-sm mt-0">
     <input class="form-control form-control-sm w-75" type="text" placeholder="Instruments, genres, artists..."
       aria-label="Search" name="query">
-      <i class="fas fa-map-marker-alt pl-2 ml-1 navigator" style="opacity:0.4; font-size: 20px;"></i>
+    <i class="fas fa-map-marker-alt pl-2 ml-1 navigator" style="opacity:0.4; font-size: 20px;"></i>
 </form>
 
+<!-- Simple for for current location -->
+
+<%= form_tag home_path, method: :get do %>
+  <%= hidden_field_tag :latitude, params[:latitude] %>
+  <%= hidden_field_tag :longitude, params[:longitude] %>
+    <%= submit_tag "Submit", class:"btn d-none", id:"submit-geo" %>
+<% end %>
+
+<!-- Index -->
 <% @users.each do |user| %>
     <%= link_to user_path(user) do %>
         <div class="card my-4" style= "border: none;">
@@ -25,14 +34,19 @@
                         <% end %>
                     </div>
                     <div class="d-flex flex-column justify-content-between">
+
+
+
                         <% if current_user %>
                           <% if current_user.address %>
                             <% distance = current_user.distance_to(user.address).round(1) %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"><%= distance %> km</p>
-                            <% end %>
                           <% else %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"></p>
                           <% end %>
+                        <% else %>
+                            <p class= "mb-0 text-right text-muted h6 mb-1"></p>
+                        <% end %>
                         <div>
                             <% user.instruments[0..2].each do |instrument| %>
                             <%= image_tag instrument.icon, :style => "height: 30px" %>
