@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def influences
+    @current_user = current_user
     if @user.store
       fetch_spotify_details
     else

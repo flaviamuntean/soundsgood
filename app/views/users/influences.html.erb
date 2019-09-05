@@ -67,7 +67,14 @@
   </div>
 
 <% else %>
-  <% session[:current_path] = influences_user_path %>
-  <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify"%>
+
+  <% if @user == @current_user %>
+    <% session[:current_path] = influences_user_path %>
+    <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify"%>
+  <% else %>
+    <h1><%= @user.first_name %> doesn't have anything to show 😥</h1>
+  <% end %>
+
 <% end %>
+
 
