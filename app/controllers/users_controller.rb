@@ -37,6 +37,9 @@ class UsersController < ApplicationController
   def bio
     session[:current_path] = bio_user_path(params[:id])
     @current_user = current_user
+
+    @photo = Photo.new
+    @photos = Photo.where(user_id: params[:id]).order(created_at: :DESC)
   end
 
   def update
