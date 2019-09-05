@@ -2,6 +2,8 @@ require 'open-uri'
 class User < ApplicationRecord
   include PgSearch::Model
   mount_uploader :avatar, PhotoUploader
+  mount_uploader :banner, PhotoUploader
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
