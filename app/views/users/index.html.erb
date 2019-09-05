@@ -1,9 +1,11 @@
 <form class="form-inline d-flex justify-content-center form-sm mt-0">
     <input class="form-control form-control-sm w-75" type="text" placeholder="Instruments, genres, artists..."
       aria-label="Search" name="query">
-      <% if current_user %>
-        <i class="fas fa-map-marker-alt pl-2 ml-1 navigator" style="opacity:0.4; font-size: 20px;"></i>
-      <% end %>
+    <button type="submit" class="pl-2 ml-1 my-0 mr-0 pb-0"><i class="fas fa-search" style="opacity:0.4; font-size: 20px; border: none;"></i>
+    </button>
+    <% if current_user %>
+      <i class="fas fa-map-marker-alt ml-1 navigator" style="opacity:0.4; font-size: 20px;"></i>
+    <% end %>
 </form>
 
 <!-- Simple for for current location -->
@@ -29,7 +31,11 @@
                 <div class="card-body py-2 px-3 d-flex justify-content-between">
                     <div class="d-flex flex-column">
                         <!-- Title -->
-                        <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %></h4>
+                        <% if user.birthday %>
+                          <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %>, <%= AgeCalculator.new(user.birthday).age %></h4>
+                        <% else %>
+                          <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %> </h4>
+                        <% end %>
                         <!-- Text -->
                         <% if !user.genres.empty? %>
                           <p class="card-text text-body">
