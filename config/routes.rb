@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :videos, only: [:create]
     resources :audios, only: [:create]
+    resources :photos, only: [:create, :destroy]
   end
 
   # show page for user with audio, bio and influences routes

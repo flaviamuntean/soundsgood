@@ -43,4 +43,54 @@
     <%= genre.name.capitalize %>
     <% end %>
   </div>
+<!-- move this div to bottom to apply css to photos -->
 </div>
+
+  <div>
+    <% if @user == @current_user %>
+      <div class="mb-2 text-center profile-page">
+        <h4 >Photos <span style="font-size: 12px;"><button id="add-photo">✚</button></span></h4>
+      </div>
+      <div id="photo-form">
+        <%= simple_form_for [@user, @photo] do |f| %>
+            <%= f.input :url, as: :file, label: false %>
+            <%= f.input :url_cache, as: :hidden %>
+            <%= f.button :submit, "Add a cool photo 📸", class:"btn btn-outline-info" %>
+        <% end %>
+      </div>
+      <% if !@user.photos.any? %>
+        <p>No photos to show</p>
+      <% else %>
+        <div class="app">
+          <ul class="hs full">
+            <% @photos.each do |photo| %>
+              <div>
+                <li class="item" style="background-image: url('<%= cl_image_path photo.url %>'); height: 90%">
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="mb-2 text-center profile-page">
+        <h4><%= @user.first_name %>'s Photos</h4>
+        <% if !@user.photos.any? %>
+          <p>No photos to show</p>
+      </div>
+        <% else %>
+        <div class="app">
+          <ul class="hs full">
+            <% @photos.each do |photo| %>
+              <div>
+                <li class="item" style="background-image: url('<%= cl_image_path photo.url %>'); height: 90%">
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        </div>
+      <% end%>
+    <% end %>
+  </div>
+            <!-- <li ><%#= cl_image_tag photo.url, class: "item", :style =>"height: 200px; with: 200px" %> </li> -->
+

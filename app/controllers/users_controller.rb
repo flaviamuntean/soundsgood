@@ -27,6 +27,9 @@ class UsersController < ApplicationController
 
   def bio
     @current_user = current_user
+
+    @photo = Photo.new
+    @photos = Photo.where(user_id: params[:id]).order(created_at: :DESC)
   end
 
   def update
