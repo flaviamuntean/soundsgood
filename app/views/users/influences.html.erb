@@ -67,6 +67,7 @@
   </div>
 
 <% else %>
-  <%= link_to "Connect with Spotify", "http://#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify"%>
+  <% session[:current_path] = influences_user_path %>
+  <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify"%>
 <% end %>
 
