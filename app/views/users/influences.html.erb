@@ -70,9 +70,23 @@
 
   <% if @user == @current_user %>
     <% session[:current_path] = influences_user_path %>
-    <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify"%>
+    <div class="jumbotron pt-3 pb-3 d-flex justify-content-around">
+      <div>
+        <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify"%>
+      </div>
+    </div>
+
+
+
   <% else %>
-    <h1><%= @user.first_name %> doesn't have anything to show 😥</h1>
+    <div class="container">
+      <div class="mt-5">
+        <div>
+        <h1 class="no-song"> <%= @user.first_name %> hasn't connected Spotify to their account yet...</h1>
+        </div>
+      </div>
+    </div>
+
   <% end %>
 
 <% end %>

@@ -1,9 +1,19 @@
-a.btn.home {
+a.btn.home.login {
   background-color: $primary;
   color: white;
   font-size: 20px;
   border-radius: 25px;
-  padding: 8px 40px;
+  padding: 8px 80px;
+}
+
+
+a.btn.home.explore {
+  background-color: white;
+  color: $primary;
+  font-size: 20px;
+  border-radius: 25px;
+  padding: 8px 70px;
+  border: solid 1px;
 }
 
 a.btn.cancel {
@@ -20,12 +30,6 @@ a.btn.profile {
   font-size: 16px;
   border-radius: 25px;
   padding: 6px 30px;
-}
-
-a.explore {
-  color: $primary;
-  font-weight: bolder;
-  font-size: 20px;
 }
 
 .youtube {
