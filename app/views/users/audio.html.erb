@@ -1,12 +1,41 @@
 <%= render "shared/banner" %>
 <%= render "shared/profile-bar" %>
 
+<% if current_user %>
+  <% if current_user.id == @user.id %>
+    <% if current_user.soundcloud_profile.nil? || current_user.soundcloud_profile == "" %>
+      <div class="jumbotron pt-3 pb-1 mb-0">
+        <div class="container">
+          <h4>Link your Soundcloud profile to show off your talent!</h4>
 
-<% if @user.soundcloud_profile.nil? %>
+            <%= form_for @user do |f| %>
+              <%#= render 'shared/errors', object: @video %>
+                <div class="input-group mb-3">
+                  <%= f.text_field :soundcloud_profile, class: 'form-control', required: true, placeholder: "https://soundcloud.com/your-username" %>
+                  <div class="input-group-append">
+                    <button class="home btn btn-outline-secondary youtube" type="submit">Connect!</button>
+                  </div>
+                </div>
+            <% end %>
+
+        </div>
+      </div>
+    <% else %>
+      <div class="jumbotron pt-3 pb-1 mb-0">
+        <div class="container">
+          <h4>You're connected to Soundcloud!</h4>
+        </div>
+      </div>
+
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @user.soundcloud_profile.nil? || @user.soundcloud_profile == "" %>
   <div class="container">
     <div class="mt-5">
       <div>
-      <h1 class="no-song"> There isn't any song to play...</h1>
+      <h1 class="no-song"> <%= @user.first_name %> hasn't uploaded any songs...</h1>
       </div>
     </div>
     <div>
