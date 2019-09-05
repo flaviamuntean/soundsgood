@@ -52,12 +52,12 @@ Genre.create(name:"reggae")
 
 # Create users
 
-User.create(first_name:"David", last_name:"Grohl", email:"davig@lw.com", password:"abcd123", address: addresses.sample)
-User.create(first_name:"Flavia", last_name:"Muntean", email:"flavia@lw.com", password:"abcd123", address: addresses.sample, soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia")
-User.create(first_name:"Bruno", last_name:"Nery", email:"bruno@lw.com", password:"abcd123", address: addresses.sample, soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia")
-User.create(first_name:"Pietro", last_name:"Dalla Vecchia", email:"pietro@lw.com", password:"abcd123", soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia", address: addresses.sample)
-User.create(first_name:"Tiago", last_name:"Alexandre Vaz Faria", email:"tiago@lw.com", password:"abcd123", address: addresses.sample, soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia")
-User.create(first_name:"Carolina", last_name:"Vieira", email:"carolina@lw.com", password:"abcd123", address: addresses.sample)
+User.create(first_name:"David", last_name:"Grohl", email:"davig@lw.com", password:"abcd123", address: addresses.sample, birthday: "1972-02-10")
+User.create(first_name:"Flavia", last_name:"Muntean", email:"flavia@lw.com", password:"abcd123", address: addresses.sample, soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia", birthday: "1991-02-10")
+User.create(first_name:"Bruno", last_name:"Nery", email:"bruno@lw.com", password:"abcd123", address: addresses.sample, soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia", birthday: "1989-02-10")
+User.create(first_name:"Pietro", last_name:"Dalla Vecchia", email:"pietro@lw.com", password:"abcd123", soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia", address: addresses.sample, birthday: "1989-02-10")
+User.create(first_name:"Tiago", last_name:"Alexandre Vaz Faria", email:"tiago@lw.com", password:"abcd123", address: addresses.sample, soundcloud_profile: "https://soundcloud.com/pietro-dallavecchia", birthday: "1994-02-10")
+User.create(first_name:"Carolina", last_name:"Vieira", email:"carolina@lw.com", password:"abcd123", address: addresses.sample,  birthday: "1996-02-10")
 
 
 # Assign instruments and genres to users
