@@ -64,6 +64,7 @@
         <div class="app">
           <ul class="hs full">
             <% @photos.each do |photo| %>
+
               <div>
                 <li class="item" style="background-image: url('<%= cl_image_path photo.url %>'); height: 90%">
                 </li>
