@@ -26,8 +26,10 @@
                     </div>
                     <div class="d-flex flex-column justify-content-between">
                         <% if current_user %>
+                          <% if current_user.address %>
                             <% distance = current_user.distance_to(user.address).round(1) %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"><%= distance %> km</p>
+                            <% end %>
                           <% else %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"></p>
                           <% end %>
