@@ -5,8 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     credentials = request.env["omniauth.auth"]
     @user.store = credentials.to_json
     if @user.save
-      redirect_to edit_user_registration_path, event: :authentication #this will throw if @user is not activated
+      redirect_to session[:current_path], event: :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, kind: "Spotify") if is_navigational_format?
+      session[:current_path] = nil
     end
   end
 

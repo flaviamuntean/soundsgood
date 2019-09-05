@@ -31,7 +31,11 @@ class UsersController < ApplicationController
   end
 
   def influences
-    fetch_spotify_details if @user.store
+    if @user.store
+      fetch_spotify_details
+    else
+      session[:current_path] = influences_user_path(params[:id])
+    end
   end
 
   def add_to_playlist

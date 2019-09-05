@@ -1,15 +1,15 @@
 <form class="form-inline d-flex justify-content-center form-sm mt-0">
     <input class="form-control form-control-sm w-75" type="text" placeholder="Instruments, genres, artists..."
       aria-label="Search" name="query">
-      <i class="fas fa-map-marker-alt pl-2 ml-1" style="opacity:0.4; font-size: 20px;"></i>
+      <i class="fas fa-map-marker-alt pl-2 ml-1 navigator" style="opacity:0.4; font-size: 20px;"></i>
 </form>
 
 <% @users.each do |user| %>
     <%= link_to user_path(user) do %>
-        <div class="card m-4" style= "border: none;">
+        <div class="card my-4" style= "border: none;">
             <!-- Card image -->
             <% if !user.videos.empty? %>
-              <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos.first.uid %>" frameborder="0"></iframe>
+              <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos.first.uid %>?modestbranding=1&controls=0" frameborder="0"></iframe>
             <% else %>
               <%= cl_image_tag photo_or_fallback(user), class:  "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
             <% end %>
