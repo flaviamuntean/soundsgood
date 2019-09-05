@@ -6,7 +6,7 @@
     <% if current_user.soundcloud_profile.nil? || current_user.soundcloud_profile == "" %>
       <div class="jumbotron pt-3 pb-1 mb-0">
         <div class="container">
-          <h4>Link your Soundcloud profile to show off your talent!</h4>
+          <h5>Link your Soundcloud profile to show off your talent!</h5>
 
             <%= form_for @user do |f| %>
               <%#= render 'shared/errors', object: @video %>
@@ -23,7 +23,7 @@
     <% else %>
       <div class="jumbotron pt-3 pb-1 mb-0">
         <div class="container">
-          <h4>You're connected to Soundcloud!</h4>
+          <h5>You're connected to Soundcloud!</h5>
         </div>
       </div>
 
@@ -56,9 +56,14 @@
     </div>
   </div>
 <% else %>
+
+  <div class="app">
+    <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s songs</h5>
+  </div>
+
   <% @ids.each do |id| %>
     <div class="container">
-      <div class="mt-4">
+      <div class="mb-2">
         <iframe width="100%" height="110" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= id %>&color=%23faa916&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=false&buying=false&sharing=false&show_playcount=false"></iframe>
       </div>
     </div>

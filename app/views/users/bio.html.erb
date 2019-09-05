@@ -3,81 +3,118 @@
 
 <div>
   <% if @user == @current_user%>
-    <% if @user.bio.nil? %>
-      <%= form_for [@user] do |f| %>
-        <div class="profile-search">
-          <%= f.text_field :bio, class: 'form-control', required: true, placeholder: "Whats your story??" %>
-          <div class="mb-2 text-center profile-page" style="text-transform: uppercase;">
-            <button class="btn btn-outline-info" type="submit">Add your bio!</button>
-          </div>
+    <% if @user.bio.nil? || @user.bio == ""%>
+      <div class="jumbotron pt-3 pb-1 mb-0">
+        <div class="container">
+
+            <%= form_for @user do |f| %>
+              <%#= render 'shared/errors', object: @video %>
+                <div class="input-group mb-3">
+                   <%= f.text_field :bio, class: 'form-control', required: true, placeholder: "What's your story?" %>
+                  <div class="input-group-append">
+                    <button class="home btn btn-outline-secondary youtube" type="submit">Add your bio!</button>
+                  </div>
+                </div>
+            <% end %>
         </div>
-      <% end %>
+      </div>
+
     <% else %>
-      <%= form_for [@user] do |f| %>
-        <div class="profile-search">
-          <%= f.text_field :bio, class: 'form-control', required: true, placeholder: @user.bio %>
-          <div class="mb-2 text-center profile-page" style="text-transform: uppercase;">
-            <button class="btn btn-outline-info" type="submit">Update your bio!</button>
-          </div>
+      <div class="jumbotron pt-3 pb-1 mb-0">
+        <div class="container">
+
+            <%= form_for @user do |f| %>
+              <%#= render 'shared/errors', object: @video %>
+                <div class="input-group mb-3">
+                   <%= f.text_field :bio, class: 'form-control', required: true, placeholder: @user.bio %>
+                  <div class="input-group-append">
+                    <button class="home btn btn-outline-secondary youtube" type="submit">Update your bio!</button>
+                  </div>
+                </div>
+            <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
-<div class="mb-2 profile-page" style="text-transform: uppercase;">
-  <div>
-    <h4>About <%= @user.first_name%></h4>
-    <p><%= @user.bio %></p>
-  </div>
 
-  <div>
-    <h4>Instruments</h4>
-    <% @user.instruments.each do |instrument| %>
-    <%= instrument.name.capitalize %> <%= image_tag instrument.icon, :style => "height: 30px" %>
+<!-- ABOUT THE USER -->
+<div>
+  <div class="app">
+    <h5 style="text-transform: uppercase;">About <%= @user.first_name%></h5>
+    <% if @user.bio.nil? %>
+      <p style="font-style: italic; opacity: 0.5;">No info yet. Contact <%= @user.first_name %> to find our more.</p>
+    <% else %>
+      <p style="font-style: italic; opacity: 0.5;"><%= @user.bio %></p>
     <% end %>
   </div>
 
-  <div>
-    <h4>Genres</h4>
-    <% @user.genres.each do |genre|%>
-    <%= genre.name.capitalize %>
-    <% end %>
+<!-- INSTRUMENTS -->
+
+    <div class="app">
+      <h5 style="text-transform: uppercase;">Instruments</h5>
+      <ul class="hs full">
+        <% @user.instruments.each do |instrument| %>
+        <div>
+          <li class="item" style="background-image: url('<%= image_path instrument.icon %>'); height: 90%"></li>
+          <p style="font-size: 14px; margin-right: 23px;"><%= instrument.name.capitalize %></p>
+        </div>
+        <% end %>
+      </ul>
+    </div>
+
+<!-- GENRES -->
+  <div class="app">
+    <h5 style="text-transform: uppercase;">Genres</h5>
+    <div class="d-flex align-items-center justify-content-between">
+      <% @user.genres[0...-1].each do |genre|%>
+        <div><%= genre.name %> </div>
+        <i class="fas fa-circle" style="font-size: 5px;"></i>
+      <% end %>
+      <div><%= @user.genres[-1].name %></div>
+    </p>
+
   </div>
 <!-- move this div to bottom to apply css to photos -->
 </div>
 
   <div>
     <% if @user == @current_user %>
-      <div class="mb-2 text-center profile-page">
-        <h4 >Photos <span style="font-size: 12px;"><button id="add-photo">✚</button></span></h4>
-      </div>
-      <div id="photo-form">
-        <%= simple_form_for [@user, @photo] do |f| %>
-            <%= f.input :url, as: :file, label: false %>
-            <%= f.input :url_cache, as: :hidden %>
-            <%= f.button :submit, "Add a cool photo 📸", class:"btn btn-outline-info" %>
+      <div class="app">
+        <h5 style="text-transform: uppercase;">Photos <button id="add-photo" style="font-size: 20px; color: #FAA916; display: inline;">✚</button></h5>
+        <% if !@user.photos.any? %>
+          <div class="pt-0">
+            <p style="font-style: italic; opacity: 0.5;">You haven't added any photos yet. Don't be shy!</p>
+          </div>
+        <% else %>
+          <div class="app">
+            <ul class="hs full">
+              <% @photos.each do |photo| %>
+
+                <div>
+                  <li class="item" style="background-image: url('<%= cl_image_path photo.url %>'); height: 90%">
+                  </li>
+                </div>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
       </div>
-      <% if !@user.photos.any? %>
-        <p>No photos to show</p>
-      <% else %>
-        <div class="app">
-          <ul class="hs full">
-            <% @photos.each do |photo| %>
 
-              <div>
-                <li class="item" style="background-image: url('<%= cl_image_path photo.url %>'); height: 90%">
-                </li>
-              </div>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <!-- ADD PHOTOS DIV -->
+      <div id="photo-form" class="app pt-0">
+        <%= simple_form_for [@user, @photo] do |f| %>
+            <%= f.input :url, as: :file, label: false, class:"" %>
+            <%= f.input :url_cache, as: :hidden %>
+            <%= f.button :submit, "Add a cool photo 📸", class:"btn btn-outline-info", style:"border-radius: 25px;" %>
+        <% end %>
+      </div>
+
     <% else %>
-      <div class="mb-2 text-center profile-page">
-        <h4><%= @user.first_name %>'s Photos</h4>
+      <div class="app">
+        <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s Photos</h5>
         <% if !@user.photos.any? %>
-          <p>No photos to show</p>
+          <p style="font-style: italic; opacity: 0.5;">No photos to show</p>
       </div>
         <% else %>
         <div class="app">
@@ -92,6 +129,7 @@
         </div>
       <% end%>
     <% end %>
+
   </div>
             <!-- <li ><%#= cl_image_tag photo.url, class: "item", :style =>"height: 200px; with: 200px" %> </li> -->
 
