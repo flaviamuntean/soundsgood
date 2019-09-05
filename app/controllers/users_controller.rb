@@ -9,6 +9,11 @@ class UsersController < ApplicationController
       # use the one below to get only the users near you
       # @users = current_user.nearbys
     end
+
+    if params[:latitude].present? && params[:longitude].present?
+      current_user.latitude = params[:latitude]
+      current_user.longitude = params[:longitude]
+    end
   end
 
   def show
