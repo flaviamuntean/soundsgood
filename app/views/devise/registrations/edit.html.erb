@@ -37,6 +37,7 @@
           <p><%= image_tag 'spotify.png', width:"20px", class:"mr-1", style:"padding-bottom: 2px;" %>Spotify profile</p>
 
           <% if current_user.store.nil? %>
+            <% session[:current_path] = edit_user_registration_path %>
             <%= link_to "Connect with Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
           <% else %>
             <%= link_to "Unlink Spotify", "#{ENV["DOMAIN"]}/users/auth/spotify", class:"btn btn-spotify" %>
