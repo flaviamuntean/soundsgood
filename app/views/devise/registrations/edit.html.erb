@@ -23,7 +23,7 @@
             <%= f.input :password_confirmation,
                         required: false,
                         input_html: { autocomplete: "new-password" } %>
-            <%= f.input :birthday, start_year: Date.today.year - 70,
+            <%= f.input :birthday, as: :date, start_year: Date.today.year - 70,
                               end_year: Date.today.year - 18,
                               selected: resource.birthday || Date.today.year - 18,
                               order: [:day, :month, :year] %>
