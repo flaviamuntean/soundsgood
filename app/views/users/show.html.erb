@@ -34,7 +34,11 @@
 <% end %>
 
 <div class="app">
-  <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s videos</h5>
+  <% if @user.videos.any? %>
+    <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s videos</h5>
+  <% else %>
+    <p style="font-style: italic; opacity: 0.5;">No videos yet.</p>
+  <% end %>
 </div>
 
 
@@ -42,8 +46,8 @@
 <!-- VIDEO FEED -->
 <div class="video-feed d-flex flex-column">
   <% @videos.each do |video| %>
-    <div class="align-self-center mb-2">
-      <iframe id="ytplayer" width="414px" height="233px" type="text/html" src="https://www.youtube.com/embed/<%= video.uid %>" frameborder="0"></iframe>
+    <div class="align-self-center mb-2" style="width: 100%;">
+      <iframe id="ytplayer" width="100%" height="233px" type="text/html" src="https://www.youtube.com/embed/<%= video.uid %>" frameborder="0"></iframe>
     </div>
   <% end %>
 </div>
