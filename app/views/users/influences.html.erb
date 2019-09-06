@@ -37,9 +37,13 @@
           </li>
           <p class="m-0 pr-3">
             <%= track.name %>
-            <% @id = track.id %>
-            <%= link_to add_to_playlist_user_path(@user, :track_id => @id) do%>
-                <i class="fas fa-plus"></i>
+            <% if current_user %>
+              <% if current_user.store %>
+                <% @id = track.id %>
+                <%= link_to add_to_playlist_user_path(@user, :track_id => @id) do%>
+                    <i class="fas fa-plus"></i>
+                <% end %>
+              <% end %>
             <% end %>
           <p>
 

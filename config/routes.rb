@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'videos/create'
   devise_for :users,
       controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  authenticated :user do
+    root to: "users#index"
+  end
   root to: 'pages#home'
 
   get '/home', to: 'users#index', as: :home
