@@ -41,8 +41,12 @@
       </div>
 
       <%= simple_form_for @user, url: update_instrument_user_path do |f| %>
-        <%= f.association :instruments %>
-        <%= f.button :submit, "Submit", as: :check_boxes %>
+        <%= f.association :instruments, as: :check_boxes %>
+        <%= f.button :submit, "Submit" %>
+      <% end %>
+      <%= simple_form_for @user, url:update_genre_user_path do |f| %>
+        <%= f.association :genres, as: :check_boxes %>
+        <%= f.button :submit, "Submit" %>
       <% end %>
     <% end %>
   <% end %>

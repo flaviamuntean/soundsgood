@@ -38,6 +38,20 @@ class UsersController < ApplicationController
     session[:current_path] = nil
   end
 
+  def update_genre
+    current_user.genres = []
+    genre_ids = params[:user][:genre_ids][1..-1]
+    genre_ids.each do |id|
+      current_user.genres << Genre.find(id)
+    end
+    if current_user.save
+      redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
+    else
+      render :bio
+    end
+    session[:current_path] = nil
+  end
+
   def show
     @video = Video.new
     @videos = Video.where(user_id: params[:id]).order(created_at: :DESC)
