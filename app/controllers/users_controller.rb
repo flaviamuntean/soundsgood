@@ -24,6 +24,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_instrument
+    current_user.instruments = []
+    instrument_ids = params[:user][:instrument_ids][1..-1]
+    instrument_ids.each do |id|
+      current_user.instruments << Instrument.find(id)
+    end
+    if current_user.save
+      redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
+    else
+      render :bio
+    end
+    session[:current_path] = nil
+  end
+
   def show
     @video = Video.new
     @videos = Video.where(user_id: params[:id]).order(created_at: :DESC)
