@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get 'influences'
       get 'add-to-playlist', as: :add_to_playlist
       patch 'update-instrument', to: "users#update_instrument", as: :update_instrument
+      patch 'update-genre', to: "users#update_genre", as: :update_genre
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
