@@ -10,7 +10,11 @@
   <div class="app">
     <h5 style="text-transform: uppercase;">About <%= @user.first_name%></h5>
     <% if @user.bio.nil? %>
-      <p style="font-style: italic; opacity: 0.5;">No info yet. Contact <%= @user.first_name %> to find our more.</p>
+      <% if @user == @current_user %>
+          <p style="font-style: italic; opacity: 0.5;">No info yet. Whats your story?</p>
+        <% else %>
+          <p style="font-style: italic; opacity: 0.5;">No info yet. Contact <%= @user.first_name %> to find our more.</p>
+      <% end %>
     <% else %>
       <p style="font-style: italic; opacity: 0.5;"><%= @user.bio %></p>
     <% end %>
@@ -18,8 +22,9 @@
 
 <!-- INSTRUMENTS -->
 
-    <div class="app">
-      <h5 style="text-transform: uppercase;">Instruments</h5>
+  <div class="app">
+    <h5 style="text-transform: uppercase;">Instruments</h5>
+    <% if @user.instruments.any? %>
       <ul class="hs full">
         <% @user.instruments.each do |instrument| %>
         <div>
@@ -28,23 +33,36 @@
         </div>
         <% end %>
       </ul>
-    </div>
+      <% else %>
+        <% if @user == @current_user %>
+          <p style="font-style: italic; opacity: 0.5;">You haven't added any instrument yet.</p>
+        <% else %>
+          <p style="font-style: italic; opacity: 0.5;"><%= @user.first_name %> hasn't added any instrument yet.</p>
+        <% end %>
+    <% end %>
+  </div>
 
 <!-- GENRES -->
   <div class="app">
     <h5 style="text-transform: uppercase;">Genres</h5>
-    <div class="d-flex align-items-center justify-content-between">
-      <% @user.genres[0...-1].each do |genre|%>
-        <div><%= genre.name %> </div>
-        <i class="fas fa-circle" style="font-size: 5px;"></i>
-      <% end %>
-      <div><%= @user.genres[-1].name %></div>
-    </p>
-
+    <% if @user.genres.any? %>
+        <div class="d-flex align-items-center justify-content-between">
+          <% @user.genres[0...-1].each do |genre|%>
+            <div><%= genre.name %> </div>
+            <i class="fas fa-circle" style="font-size: 5px;"></i>
+          <% end %>
+          <div><%= @user.genres[-1].name %></div>
+        </p>
+      </div>
+      <% else %>
+        <% if @user == @current_user %>
+            <p style="font-style: italic; opacity: 0.5;">You haven't added any genre yet.</p>
+          <% else %>
+            <p style="font-style: italic; opacity: 0.5;"><%= @user.first_name %> hasn't added any genres yet.</p>
+        <% end %>
+    <% end %>
   </div>
-<!-- move this div to bottom to apply css to photos -->
 </div>
-
   <div>
     <% if @user == @current_user %>
       <div class="app">
@@ -66,7 +84,6 @@
           </div>
         <% end %>
       </div>
-
       <!-- ADD PHOTOS DIV -->
       <div id="photo-form" class="app pt-0">
         <%= simple_form_for [@user, @photo] do |f| %>
