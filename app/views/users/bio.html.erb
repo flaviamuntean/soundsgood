@@ -28,7 +28,7 @@
       <div class="jumbotron pt-3 pb-1 mb-0">
         <div class="container">
 
-            <%= form_for @user do |f| %>
+            <%= simple_form_for @user do |f| %>
               <%#= render 'shared/errors', object: @video %>
                 <div class="input-group mb-3">
                    <%= f.text_field :bio, class: 'form-control', required: true, placeholder: @user.bio %>
@@ -39,6 +39,11 @@
             <% end %>
         </div>
       </div>
+
+      <%= simple_form_for @user, url: update_instrument_user_path do |f| %>
+        <%= f.association :instruments %>
+        <%= f.button :submit, "Submit", as: :check_boxes %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
