@@ -55,11 +55,13 @@ class UsersController < ApplicationController
   def show
     @video = Video.new
     @videos = Video.where(user_id: params[:id]).order(created_at: :DESC)
+    session[:selected_profile_bar] = "video"
   end
 
   def audio
     session[:current_path] = audio_user_path(params[:id])
     @ids = @user.soundcloud_profile_load
+    session[:selected_profile_bar] = "audio"
   end
 
   def bio
@@ -68,6 +70,7 @@ class UsersController < ApplicationController
 
     @photo = Photo.new
     @photos = Photo.where(user_id: params[:id]).order(created_at: :DESC)
+    session[:selected_profile_bar] = "bio"
   end
 
   def update
@@ -79,6 +82,7 @@ class UsersController < ApplicationController
 
   def influences
     @current_user = current_user
+    session[:selected_profile_bar] = "influences"
     if @user.store
       fetch_spotify_details
     else
