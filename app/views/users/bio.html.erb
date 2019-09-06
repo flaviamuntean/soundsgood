@@ -5,6 +5,16 @@
 <div class="header" id="myHeader">
   <%= render "shared/profile-bar" %>
 </div>
+
+<% if @user == @current_user %>
+  <div class="jumbotron pt-3 pb-3 d-flex justify-content-around">
+    <div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Edit your Info
+      </button>
+    </div>
+  </div>
+<% end %>
 <!-- ABOUT THE USER -->
 <div>
   <div class="app">
@@ -113,9 +123,13 @@
     <% end %>
   </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
+
+
+
+
+
+
+
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

@@ -3,7 +3,7 @@
 
   <div>
     <%= link_to user_path(@user) do  %>
-      <%= image_tag "videobutton.svg" %>
+      <%= image_tag "videobutton.svg", id:"video-btn", class: session[:selected_profile_bar] == "video" ? "active" : "" %>
     <% end %>
   </div>
 
@@ -13,7 +13,7 @@
 
   <div>
     <%= link_to audio_user_path(@user) do  %>
-      <%= image_tag "audiobutton.svg" %>
+      <%= image_tag "audiobutton.svg", id:"audio-btn", class: session[:selected_profile_bar] == "audio" ? "active" : "" %>
     <% end %>
   </div>
 
@@ -23,7 +23,7 @@
 
   <div>
     <%= link_to bio_user_path(@user) do  %>
-      <%= image_tag "biobutton.svg" %>
+      <%= image_tag "biobutton.svg", id:"bio-btn", class: session[:selected_profile_bar] == "bio" ? "active" : "" %>
     <% end %>
   </div>
 
@@ -33,7 +33,7 @@
 
   <div>
     <%= link_to influences_user_path(@user) do  %>
-      <%= image_tag "influences.svg" %>
+      <%= image_tag "influences.svg", id:"influences-btn", class: session[:selected_profile_bar] == "influences" ? "active" : "" %>
     <% end %>
   </div>
 </div>

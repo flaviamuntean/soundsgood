@@ -35,3 +35,23 @@
 .sticky + .content {
   padding-top: 102px;
 }
+
+
+.active{
+  opacity: 1 !important;
+  border-bottom: 3px solid black;
+}
+
+
+#audio-btn{
+  padding-bottom: 3px;
+}
+#video-btn{
+  padding-bottom: 3px;
+}
+#bio-btn{
+  padding-bottom: 3px;
+}
+#influences-btn{
+  padding-bottom: 3px;
+}
