@@ -5,53 +5,6 @@
 <div class="header" id="myHeader">
   <%= render "shared/profile-bar" %>
 </div>
-
-<div>
-  <% if @user == @current_user%>
-    <% if @user.bio.nil? || @user.bio == ""%>
-      <div class="jumbotron pt-3 pb-1 mb-0">
-        <div class="container">
-
-            <%= form_for @user do |f| %>
-              <%#= render 'shared/errors', object: @video %>
-                <div class="input-group mb-3">
-                   <%= f.text_field :bio, class: 'form-control', required: true, placeholder: "What's your story?" %>
-                  <div class="input-group-append">
-                    <button class="home btn btn-outline-secondary youtube" type="submit">Add your bio!</button>
-                  </div>
-                </div>
-            <% end %>
-        </div>
-      </div>
-
-    <% else %>
-      <div class="jumbotron pt-3 pb-1 mb-0">
-        <div class="container">
-
-            <%= simple_form_for @user do |f| %>
-              <%#= render 'shared/errors', object: @video %>
-                <div class="input-group mb-3">
-                   <%= f.text_field :bio, class: 'form-control', required: true, placeholder: @user.bio %>
-                  <div class="input-group-append">
-                    <button class="home btn btn-outline-secondary youtube" type="submit">Update your bio!</button>
-                  </div>
-                </div>
-            <% end %>
-        </div>
-      </div>
-
-      <%= simple_form_for @user, url: update_instrument_user_path do |f| %>
-        <%= f.association :instruments, as: :check_boxes %>
-        <%= f.button :submit, "Submit" %>
-      <% end %>
-      <%= simple_form_for @user, url:update_genre_user_path do |f| %>
-        <%= f.association :genres, as: :check_boxes %>
-        <%= f.button :submit, "Submit" %>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-
 <!-- ABOUT THE USER -->
 <div>
   <div class="app">
@@ -104,7 +57,6 @@
           <div class="app">
             <ul class="hs full">
               <% @photos.each do |photo| %>
-
                 <div>
                   <li class="item" style="background-image: url('<%= cl_image_path photo.url %>'); height: 90%">
                   </li>
@@ -123,10 +75,9 @@
             <%= f.button :submit, "Add a cool photo 📸", class:"btn btn-outline-info", style:"border-radius: 25px;" %>
         <% end %>
       </div>
-
     <% else %>
       <div class="app">
-        <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s Photos</h5>
+        <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s Photos </h5>
         <% if !@user.photos.any? %>
           <p style="font-style: italic; opacity: 0.5;">No photos to show</p>
       </div>
@@ -143,7 +94,42 @@
         </div>
       <% end%>
     <% end %>
-
   </div>
-            <!-- <li ><%#= cl_image_tag photo.url, class: "item", :style =>"height: 200px; with: 200px" %> </li> -->
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Update your Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @user do |f| %>
+          <%= f.input :bio, class: 'form-control', placeholder: "What's your story?" %>
+          <%= f.button :submit, "", id:"submit-bio-update" %>
+        <% end %>
+        <%= simple_form_for @user, url: update_instrument_user_path do |f| %>
+          <%= f.association :instruments, as: :check_boxes, collection: Instrument.order('name ASC') %>
+          <%= f.button :submit, "", id:"submit-instrument-update" %>
+        <% end %>
+        <%= simple_form_for @user, url:update_genre_user_path do |f| %>
+          <%= f.association :genres, as: :check_boxes, collection: Genre.order('name ASC') %>
+          <%= f.button :submit, "", id:"submit-genre-update" %>
+        <% end %>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= link_to "Done", bio_user_path(current_user), class: "done-modal" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
