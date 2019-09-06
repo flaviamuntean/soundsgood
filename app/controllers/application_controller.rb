@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :soundcloud_profile, :spotify_config, :bio, :avatar, :banner, :birthday])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :soundcloud_profile, :spotify_config, :bio, :avatar, :banner, :birthday, :address])
   end
 
   def after_sign_in_path_for(resource)
