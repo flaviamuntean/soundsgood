@@ -27,6 +27,7 @@
                               end_year: Date.today.year - 18,
                               selected: resource.birthday || Date.today.year - 18,
                               order: [:day, :month, :year] %>
+            <%= f.input :address %>
             <%= f.input :soundcloud_profile,
                         required:false
                          %>
