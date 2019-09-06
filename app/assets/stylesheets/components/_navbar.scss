@@ -13,7 +13,6 @@
 
 /* Style the header */
 .header {
-  padding: 10px 16px;
   background: white;
   color: #f1f1f1;
   z-index: 9999;
@@ -28,8 +27,9 @@
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%
-}
+  width: 100%;
+  padding-top: 9px;
+  }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
