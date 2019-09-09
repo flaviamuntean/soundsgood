@@ -112,6 +112,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def unlink_spotify
+    current_user.store = nil
+    if current_user.save
+      redirect_to edit_user_registration_path(current_user), notice: 'Your Spotify account was unlinked.'
+    end
+  end
+
   private
 
   def set_user
@@ -119,7 +126,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:bio, :soundcloud_profile)
+    params.require(:user).permit(:bio, :soundcloud_profile, :store)
   end
 
   def fetch_spotify_details

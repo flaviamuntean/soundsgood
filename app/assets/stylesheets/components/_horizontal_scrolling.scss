@@ -103,6 +103,23 @@
   background-position: center;
   margin-bottom: 2px;
   width: 135px;
+  position: relative;
+
+  .plus {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    font-size: 20px;
+    background-color: #F1F3F4;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    a {
+      color: black;
+    }
+  }
+
 }
 
 

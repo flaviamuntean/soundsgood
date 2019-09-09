@@ -22,9 +22,14 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def update
+    @conversation = Conversation.find(params[:id])
+    @conversation.update(conversation_params)
+  end
+
   private
 
   def conversation_params
-    params.permit(:sender_id, :recipient_id)
+    params.permit(:sender_id, :recipient_id, :status)
   end
 end
