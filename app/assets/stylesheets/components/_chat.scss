@@ -52,29 +52,18 @@
 //   color: #555555;
 // }
 
-.me {
- align-self: flex-end;
- background-color: $primary;
- color: white;
-}
-
-.them{
-  background:#E5E5EA;
-  color:black;
-}
-
 .chat-page{
-  background-color: aliceblue;
+  background-color: white;
   // border-radius: 10px;
   margin: 20px;
 }
 
-.message{
+.message {
   padding: 10px;
+  margin-bottom: 30px;
 }
 
-@use postcss-nested;
-body {
+.messages {
   font-family: "Helvetica Neue";
   font-size: 20px;
   font-weight: normal;
@@ -84,14 +73,94 @@ body {
   flex-direction: column;
 }
 
-.chat-lines {
+p {
   max-width: 255px;
   word-wrap: break-word;
   margin-bottom: 12px;
   line-height: 24px;
   position:relative;
   padding:10px 20px;
-  border-radius: 25px;
+  border-radius:25px;
+
+  &:before, &:after {
+    content:"";
+    position:absolute;
+    bottom:-2px;
+    height:20px;
+  }
+}
+.me {
+  color:white;
+  background:$primary;
+  align-self: flex-end;
+  // float: right;
+
+  &:before {
+    right:-7px;
+    border-right:20px solid $primary;
+    border-bottom-left-radius: 16px 14px;
+    transform:translate(0, -2px);
+  }
+
+  &:after {
+    right:-56px;
+    width:26px;
+    background: white;
+    border-bottom-left-radius: 10px;
+    transform:translate(-30px, -2px);
+  }
+
+  &.msg-time {
+    background-color: transparent;
+    color: rgba(0,0,0,0.2);
+    align-self: flex-end;
+    text-align: right;
+
+    &:after {
+      background: transparent;
+      border-bottom-left-radius: 10px;
+      transform: translate(-30px, -2px);
+    }
+    &:before {
+      right:-7px;
+      border-right:20px solid transparent;
+      border-bottom-left-radius: 16px 14px;
+      transform:translate(0, -2px);
+    }
+
+  }
+}
+.them {
+  background:#E5E5EA;
+  color:black;
+
+  &:before {
+    left:-7px;
+    border-left:20px solid #E5E5EA;
+    border-bottom-right-radius: 16px 14px;
+    transform:translate(0, -2px);
+  }
+
+  &:after {
+    left:4px;
+    width:26px;
+    background:white;
+    border-bottom-right-radius: 10px;
+    transform:translate(-30px, -2px);
+  }
+
+  &.msg-time {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.2);
+  }
 }
 
+.field{
+  background-color: $primary;
+  color: white;
+}
+
+.form-control{
+  background-color: $primary;
+}
 
