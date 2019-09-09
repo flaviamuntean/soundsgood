@@ -65,6 +65,10 @@ class User < ApplicationRecord
     return user
   end
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   def soundcloud_profile_load
     if self.soundcloud_profile.present?
       # run method

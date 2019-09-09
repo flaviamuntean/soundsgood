@@ -1,0 +1,36 @@
+<div class="message banner">
+  <% recipient = fetch_recipient(@conversation) %>
+  <h3 class="text-center"><%= recipient.first_name %></h3>
+</div>
+
+
+<% if @over_ten %>
+ <%= link_to "Show Previous", "?m=all" %>
+<% end %>
+<blockquote class="messages">
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+      <!-- <div class="header"><strong><%#= user.first_name %></strong> <%#= message.message_time %></div> -->
+      <% if message.user_id == current_user.id %>
+        <p class="me"><%= message.body %></p>
+        <p class="me msg-time"><%= message.message_time %></p>
+      <% else %>
+        <p class="them"><%= message.body %></p>
+        <p class="them msg-time"><%= message.message_time %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</blockquote>
+
+<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+ <div class="field">
+  <div class="input-group mb-3">
+    <%= f.text_area :body, class: 'form-control', required: true, placeholder: "Say something" %>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary msg" type="submit"><i class="fas fa-arrow-up"></i></button>
+    </div>
+  </div>
+<% end %>
+

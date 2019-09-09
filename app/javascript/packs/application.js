@@ -8,7 +8,7 @@ import {toggleIcons} from "../components/profile_fav.js";
 
 initGeoLocation();
 addPhoto();
-submitAll();
+// submitAll();
 myFunction();
 toggleIcons();
 

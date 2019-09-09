@@ -24,10 +24,16 @@ Rails.application.routes.draw do
       get 'add-to-playlist', as: :add_to_playlist
       patch 'update-instrument', to: "users#update_instrument", as: :update_instrument
       patch 'update-genre', to: "users#update_genre", as: :update_genre
+      patch 'update_profile', to: "users#update_profile", as: :update_profile
     end
   end
 
   resources :favorite_users, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :conversations do
+    resources :messages
+  end
+
 end

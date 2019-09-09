@@ -30,7 +30,18 @@ class UsersController < ApplicationController
     instrument_ids.each do |id|
       current_user.instruments << Instrument.find(id)
     end
-    if current_user.save
+    # if current_user.save
+    #   redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
+    # else
+    #   render :bio
+    # end
+    # session[:current_path] = nil
+  end
+
+  def update_profile
+    update_instrument
+    update_genre
+    if current_user.update(user_params) && current_user.save
       redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
     else
       render :bio
@@ -44,12 +55,12 @@ class UsersController < ApplicationController
     genre_ids.each do |id|
       current_user.genres << Genre.find(id)
     end
-    if current_user.save
-      redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
-    else
-      render :bio
-    end
-    session[:current_path] = nil
+    # if current_user.save
+    #   redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
+    # else
+    #   render :bio
+    # end
+    # session[:current_path] = nil
   end
 
   def show
@@ -77,7 +88,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
     end
-    session[:current_path] = nil
+    # session[:current_path] = nil
   end
 
   def influences
