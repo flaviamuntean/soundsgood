@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/home', to: 'users#index', as: :home
   # show page for user allowing creation of videos and audio files
   resources :users, only: [:show] do
-    resources :videos, only: [:create]
+    resources :videos, only: [:create, :destroy]
     resources :audios, only: [:create]
     resources :photos, only: [:create, :destroy]
   end
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       patch 'update-instrument', to: "users#update_instrument", as: :update_instrument
       patch 'update-genre', to: "users#update_genre", as: :update_genre
       patch 'update_profile', to: "users#update_profile", as: :update_profile
+      patch 'unlink-spotify', to: "users#unlink_spotify", as: :unlink_spotify
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

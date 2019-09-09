@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_090832) do
+ActiveRecord::Schema.define(version: 2019_09_09_131927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_090832) do
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "recipient_id"
-    t.string "status"
+    t.string "status", default: "pending"
   end
 
   create_table "genres", force: :cascade do |t|
