@@ -1,4 +1,5 @@
 <div class="banner pt-0" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= banner_or_fallback(@user)%>')">
+  <%= cl_image_tag photo_or_fallback(@user), class:"icon avatar mr-2"  %>
   <div class="icondiv" id="<%= @user.id %>">
     <% if current_user %>
       <%= icon(current_user.likes?(@user) ? "fas" : "far" , "heart m-3", :style => 'font-size: 1.5em; color: red;') %>
@@ -13,7 +14,7 @@
       <% end %>
     <% else %>
       <%= link_to "", class:"btn profile" do %>
-        Jam with <%= @user.first_name %>  
+        Jam with <%= @user.first_name %>
       <% end %>
     <% end %>
   </div>
