@@ -34,17 +34,19 @@
       <% @top_tracks.each do |track| %>
         <div>
           <li class="item" style="background-image: url('<%= track.album.images[0]['url'] %>'); height: 90%">
+            <div class="plus">
+              <% if current_user %>
+                <% if current_user.store %>
+                  <% @id = track.id %>
+                  <%= link_to add_to_playlist_user_path(@user, :track_id => @id) do%>
+                      <i class="fas fa-plus"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </li>
           <p class="m-0 pr-3">
             <%= track.name %>
-            <% if current_user %>
-              <% if current_user.store %>
-                <% @id = track.id %>
-                <%= link_to add_to_playlist_user_path(@user, :track_id => @id) do%>
-                    <i class="fas fa-plus"></i>
-                <% end %>
-              <% end %>
-            <% end %>
           <p>
 
           <% begin %>
