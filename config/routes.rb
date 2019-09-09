@@ -26,5 +26,8 @@ Rails.application.routes.draw do
       patch 'update-genre', to: "users#update_genre", as: :update_genre
     end
   end
+
+  resources :favorite_users, only: [:create, :destroy]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

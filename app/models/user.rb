@@ -20,6 +20,13 @@ class User < ApplicationRecord
   has_many :videos, dependent: :destroy
   has_many :audios, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_users, through: :favorites, source: :favorited, source_type: 'User'
+  
+  # method for favorites
+  def likes?(user)
+    favorite_users.any? { |u| u.id == user.id }
+  end
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
