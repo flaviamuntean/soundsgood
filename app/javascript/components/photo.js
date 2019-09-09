@@ -5,11 +5,10 @@ const addPhoto = () => {
 
   if(add){
     add.addEventListener("click", (event) => {
-      console.log(form.style.display);
-      if (form.style.display === "none") {
-          form.style.display = "flex";
+      if (form.style.visibility === "hidden") {
+          form.style.visibility = "visible";
         } else {
-          form.style.display = "none";
+          form.style.visibility = "hidden";
         }
     });
   }
