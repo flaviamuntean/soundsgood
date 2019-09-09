@@ -19,7 +19,7 @@
 <div>
   <div class="app">
     <h5 style="text-transform: uppercase;">About <%= @user.first_name%></h5>
-    <% if @user.bio.nil? %>
+    <% if @user.bio.nil? || @user.bio == "" %>
       <% if @user == @current_user %>
           <p style="font-style: italic; opacity: 0.5;">No info yet. Whats your story?</p>
         <% else %>
@@ -122,15 +122,6 @@
       <% end%>
     <% end %>
   </div>
-
-
-
-
-
-
-
-
-
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -141,21 +132,21 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @user do |f| %>
+        <%= simple_form_for @user, url: update_profile_user_path do |f| %>
           <%= f.input :bio, class: 'form-control', placeholder: "What's your story?" %>
-          <%= f.button :submit, "", id:"submit-bio-update" %>
-        <% end %>
-        <%= simple_form_for @user, url: update_instrument_user_path do |f| %>
+          <%#= f.button :submit, "", id:"submit-bio-update" %>
+        <%# end %>
+        <%#= simple_form_for @user, url: update_instrument_user_path do |f| %>
           <%= f.association :instruments, as: :check_boxes, collection: Instrument.order('name ASC') %>
-          <%= f.button :submit, "", id:"submit-instrument-update" %>
-        <% end %>
-        <%= simple_form_for @user, url:update_genre_user_path do |f| %>
+          <%#= f.button :submit, "", id:"submit-instrument-update" %>
+        <%# end %>
+        <%#= simple_form_for @user, url:update_genre_user_path do |f| %>
           <%= f.association :genres, as: :check_boxes, collection: Genre.order('name ASC') %>
-          <%= f.button :submit, "", id:"submit-genre-update" %>
-        <% end %>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= link_to "Done", bio_user_path(current_user), class: "done-modal" %>
+          <%= f.button :submit, id:"submit-genre-update" %>
+        <% end %>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%#= link_to "Done", bio_user_path(current_user), class: "done-modal" %> -->
       </div>
     </div>
   </div>

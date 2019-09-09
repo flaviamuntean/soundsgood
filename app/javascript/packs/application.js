@@ -7,6 +7,6 @@ import {myFunction} from"../components/profile-navbar.js";
 
 initGeoLocation();
 addPhoto();
-submitAll();
+// submitAll();
 myFunction();
 
