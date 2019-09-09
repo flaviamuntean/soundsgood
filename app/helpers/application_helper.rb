@@ -3,7 +3,7 @@ module ApplicationHelper
     if user.avatar.present?
       user.avatar
     else
-      asset_path('logo.png')
+      asset_path('avatar.png')
     end
   end
 
