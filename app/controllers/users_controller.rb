@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def update_profile
     update_instrument
     update_genre
-    if current_user.update(user_params)&& current_user.save
+    if current_user.update(user_params) && current_user.save
       redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
     else
       render :bio

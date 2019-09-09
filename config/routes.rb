@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       patch 'unlink-spotify', to: "users#unlink_spotify", as: :unlink_spotify
     end
   end
+
+  resources :favorite_users, only: [:create, :destroy]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :conversations do

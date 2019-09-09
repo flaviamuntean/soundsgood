@@ -1,9 +1,19 @@
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= banner_or_fallback(@user)%>')">
+<div class="banner pt-0" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= banner_or_fallback(@user)%>')">
+  <div class="icondiv" id="<%= @user.id %>">
+    <% if current_user %>
+      <%= icon(current_user.likes?(@user) ? "fas" : "far" , "heart m-3", :style => 'font-size: 1.5em; color: red;') %>
+    <% end %>
+  </div>
+  <div class="py-5">
+  </div>
   <div class="container">
-    <% if @user != current_user %>
+    <% if current_user && @user != current_user%>
       <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post", class:"btn profile" do %>
         Jam with <%= @user.first_name %>
+      <% end %>
+    <% else %>
+      <%= link_to "", class:"btn profile" do %>
+        Jam with <%= @user.first_name %>  
       <% end %>
     <% end %>
   </div>

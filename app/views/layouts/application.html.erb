@@ -11,9 +11,9 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%# unless action_name == 'home' || action_name == 'new' %>
+    <% unless action_name == 'home' || action_name == 'new' %>
       <%= render 'shared/navbar' %>
-    <%# end %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <div class="main-container">
     <%= yield %>
