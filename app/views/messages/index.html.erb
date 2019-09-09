@@ -7,17 +7,17 @@
 <% if @over_ten %>
  <%= link_to "Show Previous", "?m=all" %>
 <% end %>
-<blockquote class="chat">
+<blockquote class="messages">
   <% @messages.each do |message| %>
     <% if message.body %>
       <% user = User.find(message.user_id) %>
       <!-- <div class="header"><strong><%#= user.first_name %></strong> <%#= message.message_time %></div> -->
       <% if message.user_id == current_user.id %>
         <p class="me"><%= message.body %></p>
-        <p class="me time"><%= message.message_time %></p>
+        <p class="me msg-time"><%= message.message_time %></p>
       <% else %>
         <p class="them"><%= message.body %></p>
-        <p class="them time"><%= message.message_time %></p>
+        <p class="them msg-time"><%= message.message_time %></p>
       <% end %>
     <% end %>
   <% end %>

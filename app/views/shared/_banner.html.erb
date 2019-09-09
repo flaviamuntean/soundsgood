@@ -1,10 +1,10 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= banner_or_fallback(@user)%>')">
   <div class="container">
-    <% if @user == current_user %>
-      <a class="btn profile" href="#">Dancing with myself</a>
-    <% else %>
-      <a class="btn profile" href="#">Jam with <%= @user.first_name %></a>
+    <% if @user != current_user %>
+      <%= link_to conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: "post", class:"btn profile" do %>
+        Jam with <%= @user.first_name %>
+      <% end %>
     <% end %>
   </div>
 </div>
