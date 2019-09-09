@@ -77,6 +77,13 @@ users.each do |user|
 end
 
 
+Video.create(url: "https://www.youtube.com/watch?v=Mh89hr54B2Q",user: users.find(1))
+Video.create(url: "https://www.youtube.com/watch?v=BtNNwspPPCE",user: users.find(2))
+Video.create(url: "https://www.youtube.com/watch?v=3inQYHjpWMA",user: users.find(3))
+Video.create(url: "https://www.youtube.com/watch?v=Jm-hzt6mFh4",user: users.find(4))
+Video.create(url: "https://www.youtube.com/watch?v=0-GY2R-7JN8",user: users.find(5))
+Video.create(url: "https://www.youtube.com/watch?v=zielGCfHA-8",user: users.find(6))
+
 # Assign videos to users
 video_urls = ["https://www.youtube.com/watch?v=hLSEH4Bbb8A", "https://www.youtube.com/watch?v=S3fTw_D3l10",
               "https://www.youtube.com/watch?v=hi4pzKvuEQM", "https://www.youtube.com/watch?v=eKQuwAmIVKA",
