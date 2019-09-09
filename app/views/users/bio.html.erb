@@ -122,31 +122,23 @@
       <% end%>
     <% end %>
   </div>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="background-color: rgba(250, 169, 22, 0.2);">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Update your Profile</h5>
+      <div class="modal-header" style="background-color: rgba(250, 169, 22);">
+        <h5 class="modal-title"  id="exampleModalCenterTitle">Update your Profile</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <%= simple_form_for @user, url: update_profile_user_path do |f| %>
-          <%= f.input :bio, class: 'form-control', placeholder: "What's your story?" %>
-          <%#= f.button :submit, "", id:"submit-bio-update" %>
-        <%# end %>
-        <%#= simple_form_for @user, url: update_instrument_user_path do |f| %>
-          <%= f.association :instruments, as: :check_boxes, collection: Instrument.order('name ASC') %>
-          <%#= f.button :submit, "", id:"submit-instrument-update" %>
-        <%# end %>
-        <%#= simple_form_for @user, url:update_genre_user_path do |f| %>
+          <%= f.input :bio, placeholder: "What's your story?"  %>
+          <%= f.association :instruments, as: :check_boxes, collection: Instrument.order('name ASC'), class:"pb-5" %>
           <%= f.association :genres, as: :check_boxes, collection: Genre.order('name ASC') %>
-      <div class="modal-footer">
-          <%= f.button :submit, id:"submit-genre-update" %>
+      <div class="modal-footer" >
+          <%= f.button :submit, "Save changes", id:"submit-genre-update", class:"btn btn-outline-info" %>
         <% end %>
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%#= link_to "Done", bio_user_path(current_user), class: "done-modal" %> -->
       </div>
     </div>
   </div>
