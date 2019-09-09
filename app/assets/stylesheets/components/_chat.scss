@@ -51,3 +51,20 @@
 // .chat .chat-actions a:hover {
 //   color: #555555;
 // }
+
+.me {
+ align-self: flex-end;
+ background-color: $primary;
+ color: white;
+}
+
+.them{
+  background:#E5E5EA;
+  color:black;
+}
+
+.chat-page{
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
