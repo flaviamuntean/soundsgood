@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+
+      <div class="ui segment">
+       <h3>Mailbox</h3>
+       <div class="ui list">
+        <div class="item" style="width: 100%">
+          <% @conversations.each do |conversation| %>
+            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+              <% recipient = fetch_recipient(conversation) %>
+              <%= link_to recipient.first_name, conversation_messages_path(conversation) %>
+            <% end %>
+          <% end %>
+        </div>
+       </div>
+      </div>
+      <div class="ui segment">
+       <h3>All Users</h3>
+        <div class="ui list">
+          <% @users.each do |user| %>
+            <% if user.id != current_user.id %>
+              <div class="item" style="width: 100%">
+                <%= user.first_name %> <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+              </div>
+            <% end %>
+          <% end %>
+       </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
