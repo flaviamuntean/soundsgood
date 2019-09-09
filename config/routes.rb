@@ -27,6 +27,9 @@ Rails.application.routes.draw do
       patch 'update_profile', to: "users#update_profile", as: :update_profile
     end
   end
+
+  resources :favorite_users, only: [:create, :destroy]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :conversations do
