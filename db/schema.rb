@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2019_09_09_091508) do
     t.index ["user_id"], name: "index_audios_on_user_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.string "status"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
     t.string "favorited_type"
@@ -32,12 +38,6 @@ ActiveRecord::Schema.define(version: 2019_09_09_091508) do
     t.datetime "updated_at", null: false
     t.index ["favorited_type", "favorited_id"], name: "index_favorites_on_favorited_type_and_favorited_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
-  end
-  
-  create_table "conversations", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "recipient_id"
-    t.string "status"
   end
 
   create_table "genres", force: :cascade do |t|
