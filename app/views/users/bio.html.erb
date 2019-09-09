@@ -95,7 +95,7 @@
         <% end %>
       </div>
       <!-- ADD PHOTOS DIV -->
-      <div id="photo-form" class="app pt-0">
+      <div id="photo-form" class="app pt-0" style="visibility: hidden">
         <%= simple_form_for [@user, @photo] do |f| %>
             <%= f.input :url, as: :file, label: false, class:"" %>
             <%= f.input :url_cache, as: :hidden %>
