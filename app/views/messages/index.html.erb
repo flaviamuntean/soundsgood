@@ -8,7 +8,7 @@
   <% if @over_ten %>
    <%= link_to "Show Previous", "?m=all" %>
   <% end %>
-  <blockquote class="messages">
+  <blockquote class="messages chat-lines">
     <% @messages.each do |message| %>
       <% if message.body %>
         <% user = User.find(message.user_id) %>
@@ -23,15 +23,17 @@
       <% end %>
     <% end %>
   </blockquote>
-</div>
-<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
- <div class="field">
-  <div class="input-group mb-3">
-    <%= f.text_area :body, class: 'form-control', required: true, placeholder: "Say something" %>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-    <div class="input-group-append">
-      <button class="btn btn-outline-primary msg" type="submit"><i class="fas fa-arrow-up"></i></button>
+
+  <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+   <div class="field">
+    <div class="input-group mb-3">
+      <%= f.text_area :body, class: 'form-control', required: true, placeholder: "Say something" %>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary msg" type="submit"><i class="fas fa-arrow-up"></i></button>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
 

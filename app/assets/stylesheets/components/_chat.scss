@@ -65,6 +65,33 @@
 
 .chat-page{
   background-color: aliceblue;
-  border-radius: 10px;
+  // border-radius: 10px;
+  margin: 20px;
 }
+
+.message{
+  padding: 10px;
+}
+
+@use postcss-nested;
+body {
+  font-family: "Helvetica Neue";
+  font-size: 20px;
+  font-weight: normal;
+  max-width: 450px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-lines {
+  max-width: 255px;
+  word-wrap: break-word;
+  margin-bottom: 12px;
+  line-height: 24px;
+  position:relative;
+  padding:10px 20px;
+  border-radius: 25px;
+}
+
 
