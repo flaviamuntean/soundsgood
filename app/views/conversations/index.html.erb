@@ -3,31 +3,34 @@
     <div class="col-xs-12 col-sm-12">
 
       <div class="ui segment">
-       <h3>Mailbox</h3>
+       <h3 class="mb-4 text-center">Messages</h3>
        <div class="ui list">
-        <div class="item" style="width: 100%">
+        <div class="item p-0" style="width: 100%">
           <% @conversations.each do |conversation| %>
             <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
               <% recipient = fetch_recipient(conversation) %>
-              <%= link_to recipient.first_name, conversation_messages_path(conversation) %>
+              <div class="chat">
+                <%= cl_image_tag photo_or_fallback(recipient), class:"avatar mr-2"  %>
+                <div class="chat-content">
+                  <div class="name-time d-flex justify-content-between">
+                    <p><%= link_to recipient.full_name, conversation_messages_path(conversation) %></p>
+                    <p class="time"><%= conversation.messages.last.message_time.split(", ")[1] %></p>
+                  </div>
+                  <div class="body-trash d-flex justify-content-between">
+                    <p><small><%= conversation.messages.last.body.truncate(37)%></small></p>
+                    <div>
+                      <%= link_to conversation_path(conversation), method: :delete do %>
+                        <i class="fas fa-trash-alt"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% end %>
           <% end %>
         </div>
        </div>
       </div>
-      <div class="ui segment">
-       <h3>All Users</h3>
-        <div class="ui list">
-          <% @users.each do |user| %>
-            <% if user.id != current_user.id %>
-              <div class="item" style="width: 100%">
-                <%= user.first_name %> <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
-              </div>
-            <% end %>
-          <% end %>
-       </div>
-      </div>
-
     </div>
   </div>
 </div>
