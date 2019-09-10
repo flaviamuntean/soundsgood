@@ -39,7 +39,7 @@
         <div class="card my-4" style= "border: none;">
             <!-- Card image -->
             <% if !user.videos.empty? %>
-              <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos ? user.videos.first.uid : 0 %>?modestbranding=1&controls=0" frameborder="0"></iframe>
+              <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos ? user.videos.first.uid : 0 %>?color=white?fs=0" frameborder="0"></iframe>
             <% elsif !user.soundcloud_profile.nil? || !user.soundcloud_profile == "" %>
               <% id = user.soundcloud_profile_load ? user.soundcloud_profile_load.first : 0 %>
               <iframe width="100%" height="230px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= id %>&color=%23faa916&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=false&buying=false&sharing=false&show_playcount=false"></iframe>
@@ -75,7 +75,7 @@
                         <% else %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"></p>
                         <% end %>
-                        <div>
+                        <div class="text-right">
                             <% user.instruments[0..2].each do |instrument| %>
                             <%= image_tag instrument.icon, :style => "height: 30px" %>
                             <% end %>
