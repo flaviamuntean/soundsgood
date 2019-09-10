@@ -1,5 +1,8 @@
 <div class="chat-page">
-  <div class="message banner">
+  <div class="message banner" style="display: flex;">
+    <div>
+      <%= image_tag "seta.png", height: '32', width: '32' %>
+    </div>
     <% recipient = fetch_recipient(@conversation) %>
     <h3 class="text-center"><%= recipient.first_name %></h3>
   </div>
@@ -21,7 +24,7 @@
       <%= f.text_area :body, class: 'form-control', required: true, placeholder: "Type your message..." %>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
       <div class="input-group-append">
-        <button class="fas  btn btn-outline-primary" type="submit"><i class="fa-location-arrow"></i></button>
+        <button class="fas  btn btn-outline-primary" type="submit"><i></i><%= image_tag "icons8-enviar-e-mail-24.png" %></button>
       </div>
     </div>
   <% end %>
@@ -40,5 +43,4 @@
       })
     </script>
   <% end %>
-
 
