@@ -153,7 +153,8 @@ class UsersController < ApplicationController
     info = JSON.parse(current_user.store)
     current_spotify_user = RSpotify::User.new(info)
     playlists = current_spotify_user.playlists
-    if !playlists.nil?
+
+    if playlists.any?
       current_spotify_user.playlists(limit: 50).each do |pl|
         if pl.name == "soundsgood"
           return playlist = pl
