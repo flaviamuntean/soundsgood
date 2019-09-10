@@ -77,11 +77,11 @@ class User < ApplicationRecord
       # run method
       url = 'https://api.soundcloud.com/resolve.json?url=' + self.soundcloud_profile + '/tracks&client_id=Xueuyz9qtHwN5mdmSV29YLkUHJhSx6b3'
       tracks = JSON.load(open(url))
-      ids = []
+      songs = {}
       tracks.each do |track|
-        ids << track["id"]
+        songs[track["title"]] = track["id"]
       end
-      ids[1..5]
+      songs.sort_by { |key| key }.to_h
     end
   end
 end

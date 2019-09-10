@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:user_id])
     @photo.destroy
-    redirect_to bio_user_path, notice: 'Instrument was successfully deleted.'
+    redirect_to bio_user_path, notice: 'Photo was successfully deleted.'
   end
 
   private
@@ -23,7 +23,4 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:url, :user_id)
   end
 
-  def fetch_photo
-
-  end
 end

@@ -164,8 +164,9 @@
           <%= f.input :bio, placeholder: "What's your story?"  %>
           <%= f.association :instruments, as: :check_boxes, collection: Instrument.order("lower(name) ASC"), class:"pb-5" %>
           <%= f.association :genres, as: :check_boxes, collection: Genre.order("lower(name) ASC") %>
-      <div class="modal-footer" >
+        <div class="modal-footer" >
           <%= f.button :submit, "Save changes", id:"submit-genre-update", class:"btn btn-outline-info" %>
+        </div>
         <% end %>
       </div>
     </div>
