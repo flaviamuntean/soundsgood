@@ -9,6 +9,6 @@ class Message < ApplicationRecord
   end
 
   def message_short_time
-    created_at.strftime("%H:%M")
+    created_at.strftime("%-l:%M%P")
   end
 end
