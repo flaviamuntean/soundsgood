@@ -57,24 +57,23 @@
 <!-- GENRES -->
   <div class="app">
     <h5 style="text-transform: uppercase;">Genres</h5>
-      <% if @user.genres.any? %>
-        <div>
-          <div class="d-flex align-items-center justify-content-between">
-            <% @user.genres[0...-1].each do |genre|%>
-              <div class="mx-1" style="white-space: nowrap"> <%= genre.name %> </div>
-              <i class="fas fa-circle" style="font-size: 5px;"></i>
-            <% end %>
-            <div class="mx-1" style="white-space: nowrap"><%= @user.genres[-1].name %></div>
-          </div>
+  </div>  
+  <div class="app">
+    <% if @user.genres.any? %>
+        <div class="d-flex align-items-center justify-content-between">
+          <% @user.genres[0...-1].each do |genre|%>
+            <div class="mx-1" style="white-space: nowrap"> <%= genre.name %> </div>
+            <i class="fas fa-circle" style="font-size: 5px;"></i>
+          <% end %>
+          <div class="mx-1" style="white-space: nowrap"><%= @user.genres[-1].name %></div>
         </div>
-
+    <% else %>
+      <% if @user == @current_user %>
+          <p style="font-style: italic; opacity: 0.5;">You haven't added any genre yet.</p>
       <% else %>
-        <% if @user == @current_user %>
-            <p style="font-style: italic; opacity: 0.5;">You haven't added any genre yet.</p>
-        <% else %>
-            <p style="font-style: italic; opacity: 0.5;"><%= @user.first_name %> hasn't added any genres yet.</p>
-        <% end %>
+          <p style="font-style: italic; opacity: 0.5;"><%= @user.first_name %> hasn't added any genres yet.</p>
       <% end %>
+    <% end %>
   </div>
 
   <!-- FAVOURITE SOUNDSGOOD USERS -->
