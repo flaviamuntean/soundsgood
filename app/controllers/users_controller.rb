@@ -83,6 +83,7 @@ class UsersController < ApplicationController
     @photo = Photo.new
     @photos = Photo.where(user_id: params[:id]).order(created_at: :DESC)
     session[:selected_profile_bar] = "bio"
+
   end
 
   def update

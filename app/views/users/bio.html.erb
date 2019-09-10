@@ -87,6 +87,9 @@
               <% @photos.each do |photo| %>
                 <div>
                   <li class="item" style="background-image: url('<%= cl_image_path photo.url %>'); height: 90%">
+                    <%= link_to user_photo_path(photo), method: :delete do %>
+                      <div class="plus" style="background-color: white;"><i class="far fa-trash-alt"></i></div>
+                    <% end %>
                   </li>
                 </div>
               <% end %>
