@@ -1,12 +1,11 @@
 <div class="chat-page">
-  <div class="message banner" style="display: flex;">
-    <div>
-      <%= image_tag "seta.png", height: '32', width: '32' %>
+    <div class="message banner fixed-top" style="display: flex;">
+      <div>
+        <%= image_tag "seta.png", height: '32', width: '32' %>
+      </div>
+      <% recipient = fetch_recipient(@conversation) %>
+      <h3 class="text-center"><%= recipient.first_name %></h3>
     </div>
-    <% recipient = fetch_recipient(@conversation) %>
-    <h3 class="text-center"><%= recipient.first_name %></h3>
-  </div>
-
 
   <% if @over_ten %>
    <%= link_to "Show Previous", "?m=all" %>
@@ -20,7 +19,7 @@
 
   <%= form_for [@conversation, @message], html: {class: "ui reply form"}, remote: true do |f| %>
    <div class="field">
-    <div class="input-group mb-3">
+    <div class="input-group fixed-bottom">
       <%= f.text_area :body, class: 'form-control', required: true, placeholder: "Type your message..." %>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
       <div class="input-group-append">
