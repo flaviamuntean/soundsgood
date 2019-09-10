@@ -122,6 +122,22 @@
 
 }
 
+.item.fav-user {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.fav-box {
+  grid-auto-columns: calc(50% - var(--gutter) * 6);
+  grid-template-rows: minmax(0, 1fr);
+
+  p {
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0;
+  }
+}
 
 
 .no-scrollbar {
