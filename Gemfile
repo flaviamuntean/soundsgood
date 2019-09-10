@@ -25,6 +25,8 @@ gem 'omniauth-facebook'
 gem 'pg_search'
 gem 'geocoder'
 gem 'age_calculator', '~> 1.2', '>= 1.2.1'
+gem 'video_thumb'
+
 
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'

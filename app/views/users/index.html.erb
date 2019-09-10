@@ -16,6 +16,18 @@
     <%= submit_tag "Submit", class:"btn d-none", id:"submit-geo" %>
 <% end %>
 
+<div onclick="play();" id="vidwrap" style="height:230px; width:100%; background: black url(<%= VideoThumb::get('http://www.youtube.com/watch?v=0-GY2R-7JN8', "max") %>) no-repeat center; background-size: cover; overflow: hidden; cursor:pointer;" class="youtube-play d-flex align-items-center justify-content-center">
+    <div class="video_buttons">
+      <i class="fas fa-play"></i>
+    </div>
+
+</div>
+<script type="text/javascript">
+    function play(){
+        document.getElementById('vidwrap').innerHTML = '<iframe width="100%" height="230px" src="http://www.youtube.com/embed/0-GY2R-7JN8?autoplay=1&mute=1" frameborder="0" allow="autoplay"></iframe>';
+    }
+</script>
+
 <!-- Index -->
 <% @users.each do |user| %>
     <%= link_to user_path(user) do %>
@@ -50,7 +62,7 @@
 
                         <% if current_user %>
                           <% if current_user.address %>
-                            <% distance = current_user.distance_to(user.address).round(1) %>
+                            <% distance = user.distance_from_user %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"><%= distance %> km</p>
                           <% else %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"></p>
