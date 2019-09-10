@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= banner_or_fallback(@user)%>')">
   <%= cl_image_tag photo_or_fallback(@user), class:"icon avatar-small"  %>
   <div class="icondiv" id="<%= @user.id %>">
-    <% if current_user %>
+    <% if current_user && @user != current_user %>
       <%= icon(current_user.likes?(@user) ? "fas" : "far" , "heart", :style => 'font-size: 1.5em; color: #FAA916;') %>
     <% end %>
   </div>
