@@ -22,13 +22,14 @@
 
     <p class="me msg">
       <%= message.body %>
-      <small class="me-msg-time"><%= message.message_time.split(", ")[1] %></small>
     </p>
+    <small class="me-msg-time"><%= message.message_time.split(", ")[1] %></small>
+
   <% else %>
     <p class="them msg">
       <%= message.body %>
-      <small class="them-msg-time"><%= message.message_time.split(", ")[1] %></small>
     </p>
+    <small class="them-msg-time"><%= message.message_time.split(", ")[1] %></small>
   <% end %>
 <% end %>
 

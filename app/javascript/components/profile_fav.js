@@ -1,5 +1,5 @@
 const toggleIcons = function() {
-  const icon = document.querySelector('.banner i')
+  const icon = document.querySelector('.banner .fa-heart')
   if(icon) {
     console.log(icon)
 
