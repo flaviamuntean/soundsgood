@@ -31,12 +31,6 @@ class UsersController < ApplicationController
     instrument_ids.each do |id|
       current_user.instruments << Instrument.find(id)
     end
-    # if current_user.save
-    #   redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
-    # else
-    #   render :bio
-    # end
-    # session[:current_path] = nil
   end
 
   def update_profile
@@ -56,12 +50,7 @@ class UsersController < ApplicationController
     genre_ids.each do |id|
       current_user.genres << Genre.find(id)
     end
-    # if current_user.save
-    #   redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
-    # else
-    #   render :bio
-    # end
-    # session[:current_path] = nil
+
   end
 
   def show
@@ -72,8 +61,12 @@ class UsersController < ApplicationController
 
   def audio
     session[:current_path] = audio_user_path(params[:id])
-    @ids = @user.soundcloud_profile_load
+    @songs = @user.soundcloud_profile_load
     session[:selected_profile_bar] = "audio"
+  end
+
+  def update_audio
+
   end
 
   def bio
@@ -83,14 +76,19 @@ class UsersController < ApplicationController
     @photo = Photo.new
     @photos = Photo.where(user_id: params[:id]).order(created_at: :DESC)
     session[:selected_profile_bar] = "bio"
-
   end
 
   def update
-    if @user.update(user_params)
+    if params.dig(:user,:song_uid)
+      @selected_songs = params.dig(:user,:song_uid).drop(1)
+    else
+      @selected_songs = []
+    end
+    @user.song_uid = @selected_songs
+    @user.soundcloud_profile = params.dig(:user, :soundcloud_profile) || @user.soundcloud_profile
+    if @user.save
       redirect_to session[:current_path], notice: 'Your profile was successfully updated.'
     end
-    # session[:current_path] = nil
   end
 
   def influences
@@ -130,7 +128,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:bio, :soundcloud_profile, :store, :distance_from_user)
+    params.require(:user).permit(:bio, :soundcloud_profile, :store, :distance_from_user, :song_uid)
   end
 
   def set_distance_from_user
