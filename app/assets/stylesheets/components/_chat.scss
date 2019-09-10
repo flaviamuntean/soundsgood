@@ -52,35 +52,60 @@
 //   color: #555555;
 // }
 
-.chat-page{
-  background-color: white;
-  // border-radius: 10px;
-  margin: 20px;
-}
+// .chat-page{
+//   background-color: white;
+//   // border-radius: 10px;
+// }
 
 .message {
   padding: 10px;
+  color: white;
+
+  h5 {
+    margin: 0;
+  }
+
+  .back {
+    width: 50px;
+    display: flex;
+    align-items: center;
+
+    a {
+      i {
+        color: white;
+      }
+    }
+  }
+
+  .recipient {
+    display: flex;
+    align-items: center;
+    width: auto;
+  }
 }
+
+
 
 .messages {
   font-family: "Helvetica Neue";
-  font-size: 20px;
   font-weight: normal;
-  max-width: 450px;
-  margin: 50px auto;
   display: flex;
   flex-direction: column;
+  margin-left: 14px;
+  margin-right: 14px;
 
 
   p {
     display: flex;
-    max-width: 90%;
+    flex-direction: column;
+    max-width: 75%;
     word-wrap: break-word;
-    margin-bottom: 12px;
+    margin-bottom: 2px;
     line-height: 24px;
     position: relative;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 4px 12px;
+    border-radius: 22px;
+    font-size: 18px;
 
     &:before, &:after {
       content: "";
@@ -110,18 +135,20 @@
       transform:translate(-30px, -2px);
     }
 
-    .me-msg-time {
-      align-self: flex-end;
-      margin-left: 20px;
-      background-color: transparent;
-      color: rgba(0,0,0,0.2);
-    }
+  }
+
+  .me-msg-time {
+    align-self: flex-end;
+    background-color: transparent;
+    color: rgba(0,0,0,0.2);
+    font-size: 70%;
+    margin-bottom: 8px;
   }
 
   .them {
     background: #E5E5EA;
     color: black;
-    justify-content: space-between;
+    align-self: flex-start;
 
     &:before {
       left: -7px;
@@ -138,10 +165,13 @@
       transform: translate(-30px, -2px);
     }
 
-    .them-msg-time {
-      align-self: flex-end;
-      color: rgba(0, 0, 0, 0.2);
-    }
+  }
+
+  .them-msg-time {
+    align-self: flex-start;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 70%;
+    margin-bottom: 8px;
   }
 
   .field{
@@ -153,4 +183,8 @@
     background-color: $primary;
   }
 
+}
+
+.new_message {
+  width: 90%;
 }
