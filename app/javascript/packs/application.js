@@ -12,4 +12,4 @@ submitAll();
 toggleIcons();
 initUpdateNavbarOnScroll();
 
-
+const messagesIndex = document.querySelector(".messages.index");
