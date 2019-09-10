@@ -186,7 +186,7 @@ p {
     transform:translate(-30px, -2px);
   }
 
-  &.msg-time {
+  &.me-msg-time {
     background-color: transparent;
     color: rgba(0,0,0,0.2);
     align-self: flex-end;
@@ -225,7 +225,7 @@ p {
     transform:translate(-30px, -2px);
   }
 
-  &.msg-time {
+  &.them-msg-time {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.2);
   }
