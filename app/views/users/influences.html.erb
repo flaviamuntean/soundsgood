@@ -67,6 +67,16 @@
     <h5 class="mt-5 mb-3"> LAST PLAYED TRACK</h5>
       <div>
         <div class="last-track" style="background-image: url('<%= @track.album.images[0]['url'] %>');">
+          <div class="plus">
+            <% if current_user %>
+              <% if current_user.store %>
+                <% @id = @track.id %>
+                <%= link_to add_to_playlist_user_path(@user, :track_id => @id) do%>
+                    <i class="fas fa-plus"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
         <div class="mb-1" style="font-size: 10px;"><%= @track.artists[0].name.upcase %> - <%= @track.name.upcase %></div>
 

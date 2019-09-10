@@ -4,23 +4,24 @@ class UsersController < ApplicationController
   def index
     if params[:query].present?
       if current_user
-        @users = User.global_search(params[:query]).where.not(id: current_user.id)
+        set_distance_from_user
+        @users = User.global_search(params[:query]).where.not(id: current_user.id).order("distance_from_user ASC")
       else
         @users = User.global_search(params[:query])
       end
     else
       if current_user
-        @users = User.where.not(id: current_user.id)
+        set_distance_from_user
+        @users = User.where.not(id: current_user.id).order("distance_from_user ASC")
       else
         @users = User.all
       end
-      # use the one below to get only the users near you
-      # @users = current_user.nearbys
     end
 
     if params[:latitude].present? && params[:longitude].present?
       current_user.latitude = params[:latitude]
       current_user.longitude = params[:longitude]
+      set_distance_from_user
     end
   end
 
@@ -114,6 +115,8 @@ class UsersController < ApplicationController
 
   def unlink_spotify
     current_user.store = nil
+    current_user.top_artists = nil
+    current_user.top_tracks = nil
     if current_user.save
       redirect_to edit_user_registration_path(current_user), notice: 'Your Spotify account was unlinked.'
     end
@@ -126,14 +129,23 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:bio, :soundcloud_profile, :store)
+    params.require(:user).permit(:bio, :soundcloud_profile, :store, :distance_from_user)
+  end
+
+  def set_distance_from_user
+    User.all.each do |user|
+      user.distance_from_user = current_user.distance_to(user.address).round(1)
+      user.save
+    end
   end
 
   def fetch_spotify_details
     info = JSON.parse(@user.store)
     @spotify_user = RSpotify::User.new(info)
-    @top_artists = @spotify_user.top_artists(time_range: 'long_term') #=> (Artist array)
-    @top_tracks = @spotify_user.top_tracks(time_range: 'long_term') #=> (Track array)
+    # @top_artists = @spotify_user.top_artists(time_range: 'long_term') #=> (Artist array)
+    # @top_tracks = @spotify_user.top_tracks(time_range: 'long_term') #=> (Track array)
+    @top_artists = @user.top_artists
+    @top_tracks = @user.top_tracks
     @track = @spotify_user.recently_played[0]
   end
 

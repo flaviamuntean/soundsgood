@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_131927) do
+ActiveRecord::Schema.define(version: 2019_09_09_194358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_09_09_131927) do
     t.integer "sender_id"
     t.integer "recipient_id"
     t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -125,6 +127,9 @@ ActiveRecord::Schema.define(version: 2019_09_09_131927) do
     t.float "longitude"
     t.string "banner"
     t.date "birthday"
+    t.float "distance_from_user"
+    t.string "top_artists"
+    t.string "top_tracks"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
