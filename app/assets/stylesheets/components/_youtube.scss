@@ -1,0 +1,27 @@
+.ytp-title-channel-logo {
+  display: none !important;
+}
+
+.ytp-icon {
+  display: none !important;
+}
+
+.ytp-title-text {
+  display: none !important;
+}
+
+.video_buttons {
+  // min-width: 150px;
+  // max-width: 225px;
+  width: 30%;
+  padding: 5%;
+  border-radius: .7rem;
+  background: rgba(105,105,105,0.3);
+  text-align: center;
+
+  i {
+    font-size: 40px;
+    color: rgba(255,255,255, 0.3);
+  }
+}
+

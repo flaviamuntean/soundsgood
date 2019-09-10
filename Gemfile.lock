@@ -94,6 +94,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    json (2.2.0)
     jwt (2.2.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -230,6 +231,9 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
+    video_thumb (0.1.6)
+      json (~> 2.1)
+      nokogiri (~> 1.8)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -275,6 +279,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
+  video_thumb
   web-console (>= 3.3.0)
   webpacker
 

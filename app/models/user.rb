@@ -4,6 +4,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, PhotoUploader
   mount_uploader :banner, PhotoUploader
 
+  serialize :top_tracks, Array
+  serialize :top_artists, Array
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -22,7 +24,7 @@ class User < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :favorites
   has_many :favorite_users, through: :favorites, source: :favorited, source_type: 'User'
-  
+
   # method for favorites
   def likes?(user)
     favorite_users.any? { |u| u.id == user.id }
