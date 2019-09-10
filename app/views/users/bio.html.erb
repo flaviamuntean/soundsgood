@@ -76,7 +76,7 @@
   <div>
     <% if @user == @current_user %>
       <div class="app">
-        <h5 style="text-transform: uppercase;">Photos <button id="add-photo" style="font-size: 20px; color: #FAA916; display: inline;">✚</button></h5>
+        <h5 style="text-transform: uppercase;">Photos <button id="add-photo">✚</button></h5>
         <% if !@user.photos.any? %>
           <div class="pt-0">
             <p style="font-style: italic; opacity: 0.5;">You haven't added any photos yet. Don't be shy!</p>
