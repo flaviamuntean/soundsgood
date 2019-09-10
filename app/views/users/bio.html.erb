@@ -72,10 +72,32 @@
         <% end %>
     <% end %>
   </div>
+
+  <!-- FAVOURITE SOUNDSGOOD USERS -->
+  <div class="app">
+    <h5 style="text-transform: uppercase;">FAVOURITE USERS</h5>
+    <% if @user.favorites.any? %>
+      <ul class="hs full fav-box">
+        <% @user.favorites.each do |fav|%>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <li class="item fav-user" style="background-image: url('<%= photo_or_fallback(fav.favorited) %>');"></li>
+            <p style="font-size: 14px;"><%= fav.favorited.first_name %></p>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <% if @user == @current_user %>
+          <p style="font-style: italic; opacity: 0.5;">You haven't added any favorite users yet.</p>
+        <% else %>
+          <p style="font-style: italic; opacity: 0.5;"><%= @user.first_name %> hasn't added any favorite users yet.</p>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
   <div>
     <% if @user == @current_user %>
-      <div class="app">
+      <div class="app pt-0">
         <h5 style="text-transform: uppercase;">Photos <button id="add-photo">✚</button></h5>
         <% if !@user.photos.any? %>
           <div class="pt-0">
@@ -103,7 +125,7 @@
         <% end %>
       </div>
     <% else %>
-      <div class="app">
+      <div class="app pt-0">
         <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s Photos </h5>
         <% if !@user.photos.any? %>
           <p style="font-style: italic; opacity: 0.5;">No photos to show</p>
