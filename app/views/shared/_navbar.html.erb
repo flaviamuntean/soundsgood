@@ -6,7 +6,7 @@
 
   <% if user_signed_in? %>
   <div class="dropdown ml-auto mr-3 dropleft">
-    <i class="far fa-bell" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 18px; opacity: 0.4"></i>
+    <i class="far fa-bell" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: red; font-size: 18px; opacity: 0.6"></i>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notifications" >
           <% current_user.notifications.reverse[0..3].each do |notification| %>
           <div class="notification_box ml-1 border-bottom">

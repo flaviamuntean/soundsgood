@@ -1,5 +1,5 @@
 <li class="notification">
     <strong><%= link_to notification.user.first_name, user_path(notification.user) %></strong>
     <%= notification.action %>
-    you! <%= time_ago_in_words(notification.created_at) %>
+    you! <%= time_ago_in_words(notification.created_at) %> ago
 </li>
