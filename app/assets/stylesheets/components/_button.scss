@@ -1,3 +1,7 @@
+.btn-primary {
+  color: white !important;
+}
+
 a.btn.home.login {
   background-color: $primary;
   color: white;
@@ -97,5 +101,21 @@ a.btn.profile {
 
 .btn.btn-outline-info {
   background-color: transparent;
+}
+
+a.audio_links {
+  background-color: white;
+  color: $primary;
+  border-radius: 25px;
+  border: solid 1px;
+  padding: 8px 40px;
+}
+
+.btn.save_changes {
+  background-color: white;
+  color: $primary;
+  border-radius: 25px;
+  border: solid 1px;
+  padding: 8px 40px;
 }
 

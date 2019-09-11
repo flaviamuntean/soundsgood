@@ -27,3 +27,22 @@
   }
 }
 
+.main-video .video-bin {
+  opacity: 0;
+}
+
+.main-video:hover .video-bin {
+  opacity: 1;
+}
+
+.video-bin {
+  i {
+  color: #0E0000;
+  opacity: 0.8;
+  }
+
+  a {
+    color: #0E0000;
+    opacity: 0.5;
+  }
+}
