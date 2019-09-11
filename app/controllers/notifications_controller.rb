@@ -8,6 +8,11 @@ class NotificationsController < ApplicationController
     #   @notifications.update_all(read_at: Time.zone.now)
     #   render json: { sucess: true}, status: :ok
     # end
+
+    def destroy
+      Notification.find(params[:id]).destroy
+      redirect_back(fallback_location: root_path)
+    end
     
     private
     

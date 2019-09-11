@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :favorite_users, only: [:create, :destroy]
+  resources :notifications, only: [:destroy] 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

@@ -57,5 +57,7 @@ const notifications = document.getElementById('notifications');
 if (notifications) {
   setCallback(({notification}) => {
     notifications.insertAdjacentHTML("afterbegin", notification);
+    document.getElementById("dropdownMenuButton").classList.remove("far");
+    document.getElementById("dropdownMenuButton").classList.add("fas");
   });
 }
