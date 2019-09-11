@@ -1,18 +1,21 @@
 <div class="message banner fixed-top d-flex">
   <%#= image_tag "seta.png", height: '32', width: '32' %>
   <div class="back">
-    <%= link_to conversations_path do %>
-      <i class="fas fa-arrow-left"></i>
+    <%= link_to conversations_path, class:"d-flex" do %>
+      <i class="fas fa-chevron-left mr-2 align-self-center"></i> Messages
     <% end %>
   </div>
   <% recipient = fetch_recipient(@conversation) %>
 
-  <%= link_to user_path(recipient) do %>
-    <div class="recipient">
-      <%= cl_image_tag photo_or_fallback(recipient), class:"avatar-small mr-2" %>
-      <h5 class="text-center" style="color: white;"><%= recipient.first_name %></h5>
-    </div>
-  <% end %>
+  <div>
+    <%= link_to user_path(recipient) do %>
+      <div class="recipient">
+        <%= cl_image_tag photo_or_fallback(recipient), class:"avatar-small mr-2" %>
+        <h5 class="text-center" style="color: black;"><%= recipient.first_name %></h5>
+      </div>
+    <% end %>
+  </div>
+
 </div>
 
 <%# if @over_ten %>
@@ -41,7 +44,7 @@
 <div class="pb-2 d-flex justify-content-around fixed-bottom">
   <%= form_for [@conversation, @message], remote: true do |f| %>
       <div class="input-group">
-        <%= f.text_field :body, class: 'form-control', required: true, placeholder: "Type your message..." %>
+        <%= f.text_field :body, class: 'form-control type-msg', required: true, placeholder: "Type your message..." %>
         <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
         <div class="input-group-append">
           <button class="home btn send" type="submit"><i class="far fa-paper-plane"></i></button>

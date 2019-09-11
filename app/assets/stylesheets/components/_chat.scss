@@ -66,13 +66,15 @@
   }
 
   .back {
-    width: 50px;
+    width: auto;
     display: flex;
     align-items: center;
+    margin-right: 10%;
 
     a {
+       color: black;
       i {
-        color: white;
+        color: black;
       }
     }
   }
@@ -80,7 +82,6 @@
   .recipient {
     display: flex;
     align-items: center;
-    width: auto;
   }
 }
 
@@ -117,14 +118,17 @@
 
   .me {
     color: white;
-    background: $info;
+    background: rgb(242,168,0);
+    background: linear-gradient(90deg, rgba(242,168,0,1) 0%, rgba(255,213,79,1) 100%);
     align-self: flex-end;
 
     &:before {
       right: -7px;
-      border-right: 20px solid $info;
+      border-right: 20px solid #fed24b;
       border-bottom-left-radius: 16px 14px;
       transform: translate(0, -2px);
+      // background: rgb(242,152,0);
+      // border-image: linear-gradient(90deg, rgba(242,152,0,1) 0%, rgba(238,223,154,1) 100%, 1);
     }
 
     &:after {
@@ -146,13 +150,15 @@
   }
 
   .them {
-    background: #E5E5EA;
+    // background: #E5E5EA;
+    background: #f3eded;
     color: black;
     align-self: flex-start;
 
     &:before {
       left: -7px;
-      border-left: 20px solid #E5E5EA;
+      // border-left: 20px solid #E5E5EA;
+      border-left: 20px solid #f3eded;
       border-bottom-right-radius: 16px 14px;
       transform: translate(0, -2px);
     }
@@ -187,4 +193,9 @@
 
 .new_message {
   width: 90%;
+}
+
+.type-msg {
+  background-color: #f3eded;
+  border-color: #f3eded;
 }
