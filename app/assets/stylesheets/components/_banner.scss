@@ -30,6 +30,7 @@
   font-weight: bold;
 }
 
+
 .banner p {
   font-size: 20px;
   color: white;
@@ -38,7 +39,7 @@
 }
 
 .banner.message {
-  background-color: $info;
+  background: #f3eded;
   position: sticky;
 }
 
