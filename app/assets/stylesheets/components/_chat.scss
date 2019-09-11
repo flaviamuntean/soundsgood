@@ -103,7 +103,7 @@
     margin-bottom: 2px;
     line-height: 24px;
     position: relative;
-    padding: 4px 12px;
+    padding: 4px 13px;
     border-radius: 22px;
     font-size: 18px;
 
@@ -117,12 +117,12 @@
 
   .me {
     color: white;
-    background: $primary;
+    background: $info;
     align-self: flex-end;
 
     &:before {
       right: -7px;
-      border-right: 20px solid $primary;
+      border-right: 20px solid $info;
       border-bottom-left-radius: 16px 14px;
       transform: translate(0, -2px);
     }
@@ -175,12 +175,12 @@
   }
 
   .field{
-    background-color: $primary;
+    background-color: $info;
     color: white;
   }
 
   .form-control{
-    background-color: $primary;
+    background-color: $info;
   }
 
 }

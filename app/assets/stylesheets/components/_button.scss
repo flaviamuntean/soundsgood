@@ -37,6 +37,12 @@ a.btn.profile {
   border-color: $primary;
 }
 
+.btn.send {
+  border-radius: 25px;
+  border-color: $info !important;
+  background-color: $info !important;
+}
+
 .btn.home {
   background-color: $primary;
   color: white;
@@ -89,4 +95,7 @@ a.btn.profile {
   background-color: #FAA916;
 }
 
+.btn.btn-outline-info {
+  background-color: transparent;
+}
 
