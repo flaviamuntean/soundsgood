@@ -15,7 +15,7 @@
   <% if current_user.id == @user.id %>
     <div class="jumbotron pt-3 pb-1 mb-0">
       <div class="container">
-        <h5>Show off your talent with videos!</h5>
+        <h5 class="text-center">Show off your talent with videos!</h5>
 
 
           <%= form_for [@user, @video] do |f| %>
@@ -23,7 +23,7 @@
               <div class="input-group mb-3">
                 <%= f.text_field :url, class: 'form-control', required: true, placeholder: "Youtube link" %>
                 <div class="input-group-append">
-                  <button class="home btn btn-outline-secondary youtube" type="submit">Add video now!</button>
+                  <button class="home btn youtube" type="submit">Add video now!</button>
                 </div>
               </div>
           <% end %>
