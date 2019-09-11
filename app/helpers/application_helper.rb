@@ -2,6 +2,8 @@ module ApplicationHelper
   def photo_or_fallback(user)
     if user.avatar.present?
       user.avatar
+    elsif user.facebook_picture_url
+      user.avatar = user.facebook_picture_url
     else
       asset_path('avatar.png')
     end
