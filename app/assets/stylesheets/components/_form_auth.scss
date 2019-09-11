@@ -53,7 +53,42 @@
   .btn-spotify:hover {
     background-color: #1ED760;
   }
+
 }
+
+.btn-spotify {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transition-duration: 33ms;
+  transition-property: background-color, border-color, color, box-shadow, filter, transform;
+  user-select: none;
+  vertical-align: middle;
+  transform: translate3d(0px, 0px, 0px);
+  background-color: rgb(29, 185, 84);
+  color: rgb(255, 255, 255) !important;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 500px;
+  padding: 12px 48px;
+  text-decoration: none !important;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-spotify:hover {
+  background-color: #1ED760;
+}
+
 
 .form-auth::after {
   content: "";

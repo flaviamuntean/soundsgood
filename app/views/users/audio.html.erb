@@ -6,7 +6,6 @@
   <%= render "shared/profile-bar" %>
 </div>
 
-<div class="content">
   <% if current_user %>
     <% if current_user.id == @user.id %>
       <% if @user.soundcloud_profile == "" || @user.soundcloud_profile.nil? %>
@@ -38,29 +37,30 @@
   <% end %>
 
   <% if @user.song_uid.empty? || @user.soundcloud_profile == "" || @user.soundcloud_profile.nil? %>
-    <div class="container">
-      <div class="mt-5">
+      <div class="container">
+        <div class="mt-5">
+          <div>
+          <h1 class="no-song"> <%= @user.first_name %> hasn't uploaded any songs...</h1>
+          </div>
+        </div>
+
         <div>
-        <h1 class="no-song"> <%= @user.first_name %> hasn't uploaded any songs...</h1>
+          <% if @user.videos.any? %>
+            <div class="mt-4">
+              <h3 class="but-text">But you can check out <%= @user.first_name %>'s videos and influences: </h3>
+            </div>
+            <div class=" mt-4 d-flex justify-content-around">
+              <div class="btn btn-outline-info"><%= link_to "Videos", user_path, class: "audio_links" %></div>
+              <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links"%></div>
+            </div>
+          <% else %>
+              <h3 class=" mt-4 but-text">But you can check out <%= @user.first_name %>'s influences:</h3>
+              <div class="mt-4 d-flex justify-content-around">
+                <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links" %></div>
+              </div>
+          <% end %>
         </div>
       </div>
-      <div>
-        <% if @user.videos.any? %>
-          <div class="mt-4">
-            <h3 class="but-text">But you can check out <%= @user.first_name %>'s videos and influences: </h3>
-          </div>
-          <div class=" mt-4 d-flex justify-content-around">
-            <div class="btn btn-outline-info"><%= link_to "Videos", user_path, class: "audio_links" %></div>
-            <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links"%></div>
-          </div>
-        <% else %>
-            <h3 class=" mt-4 but-text">But you can check out <%= @user.first_name %>'s influences:</h3>
-            <div class="mt-4 d-flex justify-content-around">
-              <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links" %></div>
-            </div>
-        <% end %>
-      </div>
-    </div>
   <% else %>
     <div class="app">
       <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s songs</h5>
@@ -73,7 +73,9 @@
         </div>
       <% end %>
   <% end %>
-</div>
+
+
+<!-- MODAL  -->
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="background-color: rgba(250, 169, 22, 0.2);">
   <div class="modal-dialog modal-dialog-centered" role="document">
