@@ -41,7 +41,7 @@
 
 <!-- NEW FORM -->
 <div class="p-4"></div>
-<div class="pb-2 d-flex justify-content-around fixed-bottom">
+<div class="form-container pb-2 pt-2 d-flex justify-content-around fixed-bottom">
   <%= form_for [@conversation, @message], remote: true do |f| %>
       <div class="input-group">
         <%= f.text_field :body, class: 'form-control type-msg', required: true, placeholder: "Type your message..." %>
