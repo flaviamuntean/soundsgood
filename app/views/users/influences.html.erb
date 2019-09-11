@@ -52,7 +52,7 @@
           <% begin %>
             <% preview = track.preview_url %>
             <% if preview %>
-              <video class="my-1 spotify-preview"controls="" name="media"><source src="<%= preview %>" type="audio/mpeg"></video>
+              <video class="my-1 spotify-preview" playsinline controls="true" name="media"><source src="<%= preview %>" type="audio/mpeg"></video>
             <% end %>
           <% rescue %>
               <%= " " %>
@@ -83,10 +83,10 @@
         <% else %>
           <p>Listen to some music on Spotify to see your tracks.</p>
         <% end %>
-        
+
         <% preview = @track.preview_url %>
         <% if !preview.nil? %>
-          <video class="m-2 pr-0" style="width: 100%; height: 25px;" controls="" name="media"><source src="<%= preview %>" type="audio/mpeg"></video>
+          <video class="m-2 pr-0" style="width: 90%; height: 25px;" controls="" name="media"><source src="<%= preview %>" type="audio/mpeg"></video>
         <% end %>
       </div>
   </div>
