@@ -57,7 +57,7 @@
 <!-- GENRES -->
   <div class="app">
     <h5 style="text-transform: uppercase;">Genres</h5>
-  </div>  
+  </div>
   <div class="app">
     <% if @user.genres.any? %>
         <div class="d-flex align-items-center justify-content-between">
@@ -82,10 +82,12 @@
     <% if @user.favorites.any? %>
       <ul class="hs full fav-box">
         <% @user.favorites.each do |fav|%>
-          <div class="d-flex flex-column justify-content-center align-items-center">
-            <li class="item fav-user" style="background-image: url('<%= photo_or_fallback(fav.favorited) %>');"></li>
-            <p style="font-size: 14px;"><%= fav.favorited.first_name %></p>
-          </div>
+          <%= link_to user_path(fav.favorited) do %>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              <li class="item fav-user" style="background-image: url('<%= photo_or_fallback(fav.favorited) %>');"></li>
+              <p style="font-size: 14px; color: #0E0000;"><%= fav.favorited.first_name %></p>
+            </div>
+          <% end %>
         <% end %>
       </ul>
     <% else %>
@@ -165,7 +167,7 @@
           <%= f.association :instruments, as: :check_boxes, collection: Instrument.order("lower(name) ASC"), class:"pb-5" %>
           <%= f.association :genres, as: :check_boxes, collection: Genre.order("lower(name) ASC") %>
         <div class="modal-footer" >
-          <%= f.button :submit, "Save changes", id:"submit-genre-update", class:"btn btn-outline-info" %>
+          <%= f.button :submit, "Save changes", id:"submit-genre-update", class:"save_changes" %>
         </div>
         <% end %>
       </div>

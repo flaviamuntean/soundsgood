@@ -11,7 +11,7 @@
       <% if @user.soundcloud_profile == "" || @user.soundcloud_profile.nil? %>
         <div class="jumbotron pt-3 pb-1 mb-0">
           <div class="container">
-            <h5>Link your Soundcloud profile to show off your talent!</h5>
+            <h5>Link your SoundCloud profile to show off your talent!</h5>
               <%= form_for @user do |f| %>
                 <%#= render 'shared/errors', object: @video %>
                 <div class="input-group mb-3">
@@ -26,7 +26,7 @@
       <% else %>
         <div class="jumbotron pt-3 pb-3 mb-0">
           <div class="container d-flex flex-column align-items-center">
-            <h5>You're connected to Soundcloud!</h5>
+            <h5>You're connected to SoundCloud!</h5>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Choose your best songs!
           </button>
@@ -50,13 +50,13 @@
               <h3 class="but-text">But you can check out <%= @user.first_name %>'s videos and influences: </h3>
             </div>
             <div class=" mt-4 d-flex justify-content-around">
-              <div class="btn btn-outline-info"><%= link_to "Videos", user_path, class: "audio_links" %></div>
-              <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links"%></div>
+              <%= link_to "Videos", user_path, class: "audio_links" %>
+              <%= link_to "Influences", influences_user_path, class: "audio_links"%>
             </div>
           <% else %>
               <h3 class=" mt-4 but-text">But you can check out <%= @user.first_name %>'s influences:</h3>
               <div class="mt-4 d-flex justify-content-around">
-                <div class="btn btn-outline-info"><%= link_to "Influences", influences_user_path, class: "audio_links" %></div>
+                <%= link_to "Influences", influences_user_path, class: "audio_links" %>
               </div>
           <% end %>
         </div>
@@ -88,9 +88,9 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for @user do |f| %>
-          <%= f.input :song_uid, as: :check_boxes, collection: @songs, label: "Your soundcloud songs:" %>
+          <%= f.input :song_uid, as: :check_boxes, collection: @songs, label: "Your SoundCloud songs:" %>
         <div class="modal-footer" >
-          <%= f.button :submit, "Save changes", id:"submit-genre-update", class:"btn btn-outline-info" %>
+          <%= f.button :submit, "Save changes", id:"submit-genre-update", class:"save_changes"%>
         </div>
         <% end %>
       </div>
