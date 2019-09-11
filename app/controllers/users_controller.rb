@@ -133,8 +133,10 @@ class UsersController < ApplicationController
 
   def set_distance_from_user
     User.all.each do |user|
-      user.distance_from_user = current_user.distance_to(user.address).round(1)
-      user.save
+      unless current_user.address.blank? || user.address.blank?
+        user.distance_from_user = current_user.distance_to(user.address).round(1)
+        user.save
+      end
     end
   end
 
