@@ -6,6 +6,8 @@ import {addPhoto} from "../components/photo.js";
 import {initUpdateNavbarOnScroll} from"../components/profile-navbar.js";
 import {toggleIcons} from "../components/profile_fav.js";
 import '../components/notifications.js';
+import {playSound} from "../components/sound.js";
+
 
 
 initGeoLocation();
@@ -13,5 +15,4 @@ addPhoto();
 submitAll();
 toggleIcons();
 initUpdateNavbarOnScroll();
-
 const messagesIndex = document.querySelector(".messages.index");

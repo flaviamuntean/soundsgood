@@ -13,15 +13,36 @@
 .video_buttons {
   // min-width: 150px;
   // max-width: 225px;
-  width: 30%;
-  padding: 5%;
+  width: 68px;
+  height: 48px;
+  padding: 0;
   border-radius: .7rem;
-  background: rgba(105,105,105,0.3);
+  background: rgba(228,228,228,0.8);
   text-align: center;
 
   i {
     font-size: 40px;
-    color: rgba(255,255,255, 0.3);
+    color: #faa916;
+    opacity: 0.8;
   }
 }
 
+.main-video .video-bin {
+  opacity: 0;
+}
+
+.main-video:hover .video-bin {
+  opacity: 1;
+}
+
+.video-bin {
+  i {
+  color: #0E0000;
+  opacity: 0.8;
+  }
+
+  a {
+    color: #0E0000;
+    opacity: 0.5;
+  }
+}

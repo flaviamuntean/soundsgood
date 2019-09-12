@@ -3,7 +3,7 @@ class VideosController < ApplicationController
     @video = Video.new(video_params)
     @video.user = current_user
     if @video.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: 'Video was successfully added.'
     else
       @user = current_user
       @videos = Video.where(user_id: params[:user_id]).order(created_at: :DESC)
@@ -16,7 +16,7 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @id = params[:user_id]
     if @video.destroy
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: 'Video was successfully deleted.'
     else
       render 'users/show', id: @id
     end
