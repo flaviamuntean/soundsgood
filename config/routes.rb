@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
   get 'videos/create'
   devise_for :users,
-      controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
+
   authenticated :user do
     root to: "users#index"
   end
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   resources :favorite_users, only: [:create, :destroy]
-  resources :notifications, only: [:destroy] 
+  resources :notifications, only: [:destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
