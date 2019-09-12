@@ -37,13 +37,21 @@
   <% end %>
 
   <% if @user.song_uid.empty? || @user.soundcloud_profile == "" || @user.soundcloud_profile.nil? %>
+    <% if @user == current_user %>
+      <div class="container">
+        <div class="mt-5">
+          <div>
+          <h1 class="no-song">  You haven't uploaded any songs...</h1>
+          </div>
+        </div>
+      </div>
+      <% else %>
       <div class="container">
         <div class="mt-5">
           <div>
           <h1 class="no-song"> <%= @user.first_name %> hasn't uploaded any songs...</h1>
           </div>
         </div>
-
         <div>
           <% if @user.videos.any? %>
             <div class="mt-4">
@@ -61,6 +69,7 @@
           <% end %>
         </div>
       </div>
+    <% end %>
   <% else %>
     <div class="app">
       <h5 style="text-transform: uppercase;"><%= @user.first_name %>'s songs</h5>
