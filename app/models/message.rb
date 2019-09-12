@@ -6,7 +6,7 @@ class Message < ApplicationRecord
   after_create :broadcast_message
 
   def message_time
-    created_at.strftime("%a %-d %bt %Y, %-l:%M%P")
+    created_at.localtime.strftime("%a %-d %bt %Y, %-l:%M%P")
   end
 
   # def message_short_time
