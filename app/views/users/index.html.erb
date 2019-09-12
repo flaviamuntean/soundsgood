@@ -34,53 +34,58 @@
 <!-- END OF TEST VIDEO -->
 
 <!-- Index -->
-<% @users.each do |user| %>
-    <%= link_to user_path(user) do %>
-        <div class="card my-4" style= "border: none;">
-            <!-- Card image -->
-            <% if user.videos.any? %>
-              <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos ? user.videos.first.uid : 0 %>?color=white?fs=0" frameborder="0"></iframe>
-            <% elsif user.song_uid.any? %>
-              <iframe width="100%" height="200px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= user.song_uid.first %>&color=%23faa916&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&buying=false&sharing=false&show_playcount=false"></iframe>
-            <% else %>
-              <%= cl_image_tag banner_or_fallback(user), class:  "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
-            <% end %>
+<% if @users.empty? %>
+  <h1>No results 🤒</h1>
+  <% else %>
+  <% @users.each do |user| %>
+      <%= link_to user_path(user) do %>
+          <div class="card my-4" style= "border: none;">
+              <!-- Card image -->
+              <% if user.videos.any? %>
+                <iframe id="ytplayer" height="230px" type="text/html" src="https://www.youtube.com/embed/<%= user.videos ? user.videos.first.uid : 0 %>?color=white?fs=0" frameborder="0"></iframe>
+              <% elsif user.song_uid.any? %>
+                <iframe width="100%" height="200px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= user.song_uid.first %>&color=%23faa916&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true&buying=false&sharing=false&show_playcount=false"></iframe>
+              <% else %>
+                <%= cl_image_tag banner_or_fallback(user), class:  "card-img-top shadow bg-white rounded", :style => "object-fit: cover; height: 230px;" %>
+              <% end %>
 
-            <!-- Card content -->
-                <div class="card-body py-2 px-3 d-flex justify-content-between">
-                    <div class="d-flex flex-column">
-                        <!-- Title -->
-                        <% if user.birthday %>
-                          <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %>, <%= AgeCalculator.new(user.birthday).age %></h4>
-                        <% else %>
-                          <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %> </h4>
-                        <% end %>
-                        <!-- Text -->
-                        <% if !user.genres.empty? %>
-                          <p class="card-text text-body">
-                            <%= user.genres[0].name %> · <%= user.genres[1].name %>
-                          </p>
-                        <% end %>
-                    </div>
-                    <div class="d-flex flex-column justify-content-between">
-
-                        <% if current_user %>
-                          <% if current_user.address && !user.distance_from_user.nil? %>
-                            <% distance = user.distance_from_user %>
-                            <p class= "mb-0 text-right text-muted h6 mb-1"><%= distance %> km</p>
+              <!-- Card content -->
+                  <div class="card-body py-2 px-3 d-flex justify-content-between">
+                      <div class="d-flex flex-column">
+                          <!-- Title -->
+                          <% if user.birthday %>
+                            <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %>, <%= AgeCalculator.new(user.birthday).age %></h4>
                           <% else %>
-                            <p class= "mb-0 text-right text-muted h6 mb-1"></p>
+                            <h4 class="card-title mb-0 h5 text-body"><%= user.first_name %> </h4>
                           <% end %>
-                        <% else %>
-                            <p class= "mb-0 text-right text-muted h6 mb-1"></p>
-                        <% end %>
-                        <div class="text-right">
-                            <% user.instruments[0..2].each do |instrument| %>
-                            <%= image_tag instrument.icon, :style => "height: 30px" %>
+                          <!-- Text -->
+                          <% if !user.genres.empty? %>
+                            <p class="card-text text-body">
+                              <%= user.genres[0].name %> · <%= user.genres[1].name %>
+                            </p>
+                          <% end %>
+                      </div>
+                      <div class="d-flex flex-column justify-content-between">
+
+                          <% if current_user %>
+                            <% if current_user.address && !user.distance_from_user.nil? %>
+                              <% distance = user.distance_from_user %>
+                              <p class= "mb-0 text-right text-muted h6 mb-1"><%= distance %> km</p>
+                            <% else %>
+                              <p class= "mb-0 text-right text-muted h6 mb-1"></p>
                             <% end %>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    <% end %>
+                          <% else %>
+                              <p class= "mb-0 text-right text-muted h6 mb-1"></p>
+                          <% end %>
+                          <div class="text-right">
+                              <% user.instruments[0..2].each do |instrument| %>
+                              <%= image_tag instrument.icon, :style => "height: 30px" %>
+                              <% end %>
+                          </div>
+                      </div>
+                  </div>
+          </div>
+      <% end %>
+  <% end %>
+
 <% end %>
