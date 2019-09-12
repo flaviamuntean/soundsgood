@@ -7,7 +7,7 @@
   <% if user_signed_in? %>
   <div class="dropdown ml-auto mr-3 dropleft">
     <i class="far fa-bell" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: red; font-size: 18px; opacity: 0.6"></i>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notifications" style="z-index: 1080">
+    <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton" id="notifications" style="z-index: 1080; width:200px;">
           <% current_user.notifications.reverse[0..5].each do |notification| %>
           <div class="notification_box">
             <a class="dropdown-item p-0" ><%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification} %> </a>
