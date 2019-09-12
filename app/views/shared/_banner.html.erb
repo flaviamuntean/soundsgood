@@ -1,23 +1,12 @@
 <!-- Banner -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= banner_or_fallback(@user)%>')">
-  
+
   <!-- Avatar -->
   <%= cl_image_tag photo_or_fallback(@user), class:"icon avatar-small" %>
-  
+
   <!-- Like profile -->
-  <div class="icondiv" id="<%= @user.id %>">
-    <% if current_user && @user != current_user %>
-      <% if !current_user.likes?(@user) %>
-        <%= link_to favorite_users_path(user_id: @user.id), method: :post, remote: true do %>
-          <%= icon(current_user.likes?(@user) ? "fas" : "far", "heart", :style => 'font-size: 1.5em; color: #FAA916;') %>
-        <% end %>
-      <% else %>
-        <%= link_to favorite_user_path(user_id: @user.id), method: :delete, remote: true do %>
-          <%= icon(current_user.likes?(@user) ? "fas" : "far", "heart", :style => 'font-size: 1.5em; color: #FAA916;') %>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
+
+  <%= render 'shared/heart', user: @user %>
 
   <!-- "Jam With" button -->
   <div class="container">
