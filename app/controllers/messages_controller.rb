@@ -26,12 +26,16 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = @conversation.messages.new(message_params)
+    @message = @conversation.messages.new(message_params)    
     if @message.save
+      user = @message.conversation.recipient
+      user = @message.conversation.sender if current_user == user
+      notification = Notification.create(notifiable_type: "favorite", recipient: user, user: current_user, action: "messaged", notifiable: @message)
       respond_to do |format|
         format.html { redirect_to conversation_messages_path(@conversation) }
         format.js
       end
+
     end
   end
 

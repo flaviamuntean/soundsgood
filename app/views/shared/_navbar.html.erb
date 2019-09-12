@@ -4,10 +4,22 @@
     <%= image_tag "logotranspcrop.png" %>
   <% end %>
 
+  <% if user_signed_in? %>
+  <div class="dropdown ml-auto mr-3 dropleft">
+    <i class="far fa-bell" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: red; font-size: 18px; opacity: 0.6"></i>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="notifications" >
+          <% current_user.notifications.reverse[0..3].each do |notification| %>
+          <div class="notification_box ml-1 border-bottom">
+            <a class="dropdown-item p-0" ><%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification} %> <%= link_to "Delete", notification_path(notification), method: :delete %> </a>
+          </div>
+          <% end %>
+      </div>
+  </div>
+<% end %>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">

@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :favorited, source_type: 'User'
   has_many :messages, dependent: :destroy
   has_many :conversations, dependent: :destroy
+  
+  has_many :notifications, foreign_key: :recipient_id
+  
   # method for favorites
   def likes?(user)
     favorite_users.any? { |u| u.id == user.id }
