@@ -1,10 +1,10 @@
 <li class="notification ml-1 border-bottom ">
     <strong><%= link_to notification.user.first_name, user_path(notification.user) %></strong>
-    <!-- <%#= link_to notification.action , conversations_path %> you!  -->
-    <% sender = notification.user %>
-    <% recipient = current_user %>
-    <% sender,recipient = recipient,sender if  Message.find_by(conversation_id: Conversation.find_by(sender_id:  sender, recipient_id: recipient)).nil? %>
-    <%= link_to notification.action , conversation_messages_path(conversation_id: Conversation.find_by(sender_id:  sender, recipient_id: recipient)) %> you!
+    <%= link_to notification.action , conversations_path %> you! 
+    <!-- <%# sender = notification.user %>
+    <%# recipient = current_user %>
+    <%# sender,recipient = recipient,sender if  Message.find_by(conversation_id: Conversation.find_by(sender_id:  sender, recipient_id: recipient)).nil? %> -->
+    <!-- <%#= link_to notification.action , conversation_messages_path(conversation_id: Conversation.find_by(sender_id:  sender, recipient_id: recipient)) %> you! -->
     <div class="d-inline font-weight-light font-italic" style="font-size: 12px">(<%= time_ago_in_words(notification.created_at) %> ago)</div> 
     <%= link_to notification_path(notification), method: :delete do %>
         <i class="fas fa-trash"></i>
