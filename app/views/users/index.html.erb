@@ -65,7 +65,7 @@
                     <div class="d-flex flex-column justify-content-between">
 
                         <% if current_user %>
-                          <% if current_user.address %>
+                          <% if current_user.address && !user.distance_from_user.nil? %>
                             <% distance = user.distance_from_user %>
                             <p class= "mb-0 text-right text-muted h6 mb-1"><%= distance %> km</p>
                           <% else %>
