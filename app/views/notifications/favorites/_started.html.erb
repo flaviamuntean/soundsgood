@@ -1,5 +1,8 @@
-<li class="notification">
+<li class="notification ml-1 border-bottom">
     <strong><%= link_to notification.user.first_name, user_path(notification.user) %></strong>
     <%= notification.action %>
     following you! <%= time_ago_in_words(notification.created_at) %> ago
+    <%= link_to notification_path(notification), method: :delete do %>
+        <i class="fas fa-trash-alt"></i>
+    <% end %>
 </li>
