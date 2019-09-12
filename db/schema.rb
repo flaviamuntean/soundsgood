@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_09_11_091542) do
     t.integer "sender_id"
     t.integer "recipient_id"
     t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
