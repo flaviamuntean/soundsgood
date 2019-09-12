@@ -1,0 +1,17 @@
+.errors-500{
+  background-image: asset-url("500.svg");
+  min-height: 52vh;
+  background-repeat: no-repeat;
+  background-position: initial;
+  background-size: cover;
+  margin-top: 20%;
+}
+
+
+.errors-404{
+  background-image: asset-url("404.jpg");
+  height: 90vh;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+    }
