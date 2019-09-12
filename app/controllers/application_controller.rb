@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
   # def after_sign_up_path_for(resource)
   #   user_path(resource)
   # end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end

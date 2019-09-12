@@ -1,3 +1,10 @@
+
+<!-- app/views/offers/show.html.erb -->
+<% content_for :meta_title, "#{@user.first_name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @user.bio %>
+<% content_for :meta_image, cl_image_path(photo_or_fallback(@user)) %>
+
+
 <!-- RENDER BANNER FROM SHARED HERE -->
 
 <div class="top-container">
