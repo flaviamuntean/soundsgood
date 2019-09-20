@@ -8,7 +8,13 @@ import {toggleIcons} from "../components/profile_fav.js";
 import '../components/notifications.js';
 import {playSound} from "../components/sound.js";
 
-
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('/service-worker.js', { scope: './' })
+    .then(function(reg) {
+      console.log('[Companion]', 'Service worker registered!');
+      console.log(reg);
+    });
+}
 
 initGeoLocation();
 addPhoto();
