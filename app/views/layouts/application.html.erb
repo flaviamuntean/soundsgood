@@ -29,7 +29,8 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= favicon_link_tag asset_path('logotranspcrop.png') %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-  </head>
+  <link rel="manifest" href="/manifest.json" />
+<meta name="apple-mobile-web-app-capable" content="yes"></head>
   <body class="<%= controller_name %> <%= action_name %> m-0">
   <!-- <body> -->
     <% unless action_name == 'home' || action_name == 'new' %>

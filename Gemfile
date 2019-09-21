@@ -21,6 +21,8 @@ gem 'omniauth-spotify'
 # gem 'omniauth-rails_csrf_protection'
 #facebook
 gem 'omniauth-facebook'
+gem "serviceworker-rails"
+
 
 gem 'pg_search'
 gem 'geocoder'

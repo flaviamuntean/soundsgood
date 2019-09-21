@@ -2,3 +2,4 @@
 //= require_tree .
 
 
+//= require serviceworker-companion
