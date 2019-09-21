@@ -1,12 +1,12 @@
 <% icon_sizes = Rails.configuration.serviceworker.icon_sizes %>
 {
-  "name": "My Progressive Rails App",
-  "short_name": "Progressive",
+  "name": "SoundsGood | Meet musicians near you",
+  "short_name": "SoundsGood",
   "start_url": "/",
   "icons": [
   <% icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
     {
-      "src": "<%= image_path "serviceworker-rails/heart-#{dim}.png" %>",
+      "src": "<%= image_path "logo.png" %>",
       "sizes": "<%= dim %>",
       "type": "image/png"
     }<%= i == (icon_sizes.length - 1) ? '' : ',' %>
@@ -14,6 +14,6 @@
   ],
   "theme_color": "#000000",
   "background_color": "#FFFFFF",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait"
 }
