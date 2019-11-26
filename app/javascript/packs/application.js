@@ -7,6 +7,8 @@ import {initUpdateNavbarOnScroll} from"../components/profile-navbar.js";
 import {toggleIcons} from "../components/profile_fav.js";
 import '../components/notifications.js';
 import {playSound} from "../components/sound.js";
+import {getAddress} from "../components/address.js";
+import {algoliaAutocomplete} from "../components/search.js";
 
 initGeoLocation();
 addPhoto();
@@ -14,3 +16,5 @@ submitAll();
 toggleIcons();
 initUpdateNavbarOnScroll();
 const messagesIndex = document.querySelector(".messages.index");
+getAddress();
+algoliaAutocomplete();
