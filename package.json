@@ -4,8 +4,10 @@
   "dependencies": {
     "@rails/webpacker": "^4.0.7",
     "actioncable": "^5.2.3",
+    "autocomplete.js": "^0.37.0",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
+    "places.js": "^1.17.0",
     "popper.js": "^1.15.0"
   },
   "devDependencies": {

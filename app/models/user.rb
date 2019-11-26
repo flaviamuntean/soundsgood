@@ -26,9 +26,9 @@ class User < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :favorited, source_type: 'User'
   has_many :messages, dependent: :destroy
   has_many :conversations, dependent: :destroy
-  
+
   has_many :notifications, foreign_key: :recipient_id
-  
+
   # method for favorites
   def likes?(user)
     favorite_users.any? { |u| u.id == user.id }
@@ -78,7 +78,7 @@ class User < ApplicationRecord
   def soundcloud_profile_load
     if self.soundcloud_profile.present?
       # run method
-      url = 'https://api.soundcloud.com/resolve.json?url=' + self.soundcloud_profile + '/tracks&client_id=Xueuyz9qtHwN5mdmSV29YLkUHJhSx6b3'
+      url = 'https://api.soundcloud.com/resolve.json?url=' + self.soundcloud_profile + '/tracks&client_id=UW9ajvMgVdMMW3cdeBi8lPfN6dvOVGji'
       tracks = JSON.load(open(url))
       songs = {}
       tracks.each do |track|
