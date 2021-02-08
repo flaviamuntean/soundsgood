@@ -30,7 +30,7 @@ gem 'age_calculator', '~> 1.2', '>= 1.2.1'
 gem 'video_thumb'
 
 
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'cloudinary', '~> 1.9.1'
 group :development do
   gem 'web-console', '>= 3.3.0'
